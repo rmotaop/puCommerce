@@ -1,0 +1,9 @@
+.dsc-logged-user {
+    top: 5px;
+    position: relative;
+    display:  inline-flex;
+}
+.dsc-logged-user span{
+   margin-left: 50px;
+   
+}

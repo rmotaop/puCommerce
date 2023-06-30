@@ -1,0 +1,13 @@
+.dsc-header-client {
+    background-color: var(--dsc-color-bg-secondary);
+    color: var(--dsc-color-font-primary);
+  }
+
+  .logUser{
+    position: relative;
+    left: 100px !important;
+}
+
+.dsc-navbar-right .dsc-menu-items-container .dsc-menu-item .span {
+  margin-left: 5px !important;
+}
