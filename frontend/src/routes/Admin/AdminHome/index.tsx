@@ -4,7 +4,11 @@ import {User} from "../../../types/user";
 import * as userService from '../../../services/user-service'
 import {Simulate} from "react-dom/test-utils";
 import error = Simulate.error;
-import { Link } from 'react-router-dom';
+import cartFill from '../../../assets/img/cart-fill.svg';
+import dollar from '../../../assets/img/dollar.svg';
+import people from '../../../assets/img/people.svg';
+import budget from '../../../assets/img/budget.svg';
+import website from '../../../assets/img/website.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function AdminHome() {
@@ -41,11 +45,11 @@ export default function AdminHome() {
 
                   <div className="d-flex align-items-center">
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i className="bi bi-cart-fill"></i>
+                    <img className="img" src={cartFill} alt="carrinhos"/>
                     </div>
                     <div className="ps-3">
                       <h6>145</h6>
-                      <span className="text-success small pt-1 fw-bold">12%</span> <span className="text-muted small pt-2 ps-1">Evolução</span>
+                      <span className="text-success small pt-1 fw-bold">19%</span> <span className="text-muted small pt-2 ps-1">Evolução</span>
 
                     </div>
                   </div>
@@ -63,10 +67,12 @@ export default function AdminHome() {
 
                   <div className="d-flex align-items-center">
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i className="bi bi-currency-dollar"></i>
+                    <img className="img" src={dollar} alt="dollar"/>
+
+
                     </div>
                     <div className="ps-3">
-                      <h6>R$3.264,00</h6>
+                      <h6>R$1.133.264,00</h6>
                       <span className="text-success small pt-1 fw-bold">8%</span> <span className="text-muted small pt-2 ps-1">Evolução</span>
 
                     </div>
@@ -87,7 +93,7 @@ export default function AdminHome() {
 
                   <div className="d-flex align-items-center">
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i className="bi bi-people"></i>
+                    <img className="img" src={people} alt="people"/>
                     </div>
                     <div className="ps-3">
                       <h6>1.244</h6>
@@ -146,7 +152,7 @@ export default function AdminHome() {
                       <tr>
                         <th scope="row"><a href="#">#2644</a></th>
                         <td>Brandon Grady</td>
-                        <td><a href="#" className="text-primar">Ultra PC Gammer V4</a></td>
+                        <td><a href="#" className="text-primary">Ultra PC Gammer V4</a></td>
                         <td>R$6.799,00</td>
                         <td><span className="badge bg-danger">Rejeitado #C1</span></td>
                       </tr>
@@ -164,7 +170,7 @@ export default function AdminHome() {
                 </div>
                 <div className="card recent-sales overflow-auto">
                 <div className="card-body">
-                  <h5 className="card-title">Vendas Recentes <span>| Hoje</span></h5>
+                  <h5 className="card-title">Delivery Recentes <span>| Semana</span></h5>
 
                   <table className="table table-borderless datatable">
                     <thead>
@@ -178,39 +184,39 @@ export default function AdminHome() {
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td>Brandon Jacob</td>
-                        <td><a href="#" className="text-primary">Mouse logi Gammer</a></td>
-                        <td>R$64,90</td>
-                        <td><span className="badge bg-success">Aprovado</span></td>
+                        <th scope="row"><a href="#">#2427</a></th>
+                        <td>Jacob Brandon</td>
+                        <td><a href="#" className="text-primary">Mouse PC PRO</a></td>
+                        <td>R$764,90</td>
+                        <td><span className="badge bg-success">Separando</span></td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#2147</a></th>
+                        <th scope="row"><a href="#">#2127</a></th>
                         <td>Kessler Brandon</td>
-                        <td><a href="#" className="text-primary">Kit Jardinagem Plus</a></td>
-                        <td>R$47,78</td>
-                        <td><span className="badge bg-warning">Pendente</span></td>
+                        <td><a href="#" className="text-primary">Kit Parafusos Especiais</a></td>
+                        <td>R$547,78</td>
+                        <td><span className="badge bg-success">Enviado</span></td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#2049</a></th>
-                        <td>Ashleigh Brandon</td>
-                        <td><a href="#" className="text-primary">Teclado Tablet At N3</a></td>
+                        <th scope="row"><a href="#">#2029</a></th>
+                        <td>Bran Ashleigh</td>
+                        <td><a href="#" className="text-primary">Teclado Logi Ultra </a></td>
                         <td>R$147,45</td>
-                        <td><span className="badge bg-success">Aprovado</span></td>
+                        <td><span className="badge bg-success">Enviado</span></td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Brandon Grady</td>
-                        <td><a href="#" className="text-primar">Ultra PC Gammer V4</a></td>
-                        <td>R$6.799,00</td>
-                        <td><span className="badge bg-danger">Rejeitado #C1</span></td>
+                        <th scope="row"><a href="#">#2624</a></th>
+                        <td>Grady Crandon</td>
+                        <td><a href="#" className="text-secondary">PC Delltra Plus E8</a></td>
+                        <td>R$26.799,00</td>
+                        <td><span className="badge bg-secondary">Entregue</span></td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
+                        <th scope="row"><a href="#">#2624</a></th>
                         <td>Raheem Brandon</td>
-                        <td><a href="#" className="text-primary">Refil Aspirador Pó</a></td>
-                        <td>R$165,89</td>
-                        <td><span className="badge bg-success">Aprovado</span></td>
+                        <td><a href="#" className="text-secondary">Jogo tapetes</a></td>
+                        <td>R$1.465,89</td>
+                        <td><span className="badge bg-secondary">Entregue</span></td>
                       </tr>
                     </tbody>
                   </table>
@@ -301,15 +307,15 @@ export default function AdminHome() {
           <div className="card">
               <div className=" info-card sales-card">
                 <div className="card-body">
-                  <h5 className="card-title">Budget Report <span>| Mês Atual</span></h5>
+                  <h5 className="card-title">Carrinhos concluídos <span>| Mês Atual</span></h5>
 
                   <div className="d-flex align-items-center">
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i className="bi bi-cart-fill"></i>
+                    <img className="img" src={budget} alt="Budget"/>
                     </div>
                     <div className="ps-3">
-                      <h6>345</h6>
-                      <span className="text-success small pt-1 fw-bold">32%</span> <span className="text-muted small pt-2 ps-1">Evolução</span>
+                      <h6>1.345</h6>
+                      <span className="text-success small pt-1 fw-bold">22%</span> <span className="text-muted small pt-2 ps-1">Evolução</span>
 
                     </div>
                   </div>
@@ -320,14 +326,14 @@ export default function AdminHome() {
           <div className="card">
               <div className=" info-card sales-card">
                 <div className="card-body">
-                  <h5 className="card-title">Website Traffic <span>| Hoje</span></h5>
+                  <h5 className="card-title">Website visitas <span>| Hoje</span></h5>
 
                   <div className="d-flex align-items-center">
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i className="bi bi-cart-fill"></i>
+                    <img className="img" src={website} alt="website"/>
                     </div>
                     <div className="ps-3">
-                      <h6>345</h6>
+                      <h6>545</h6>
                       <span className="text-success small pt-1 fw-bold">32%</span> <span className="text-muted small pt-2 ps-1">Evolução</span>
 
                     </div>

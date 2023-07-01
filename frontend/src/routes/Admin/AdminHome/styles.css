@@ -15,7 +15,9 @@ color: white;
     color: black;
     background-color: lightblue;
 }
-
+ .img {
+   width: 30px;
+ }
 
 /* DASHBOARD */
 
