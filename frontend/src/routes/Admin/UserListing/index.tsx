@@ -95,7 +95,6 @@ export default function UserListing() {
         setDialogConfirmationData({...dialogConfirmationData, visible: false});
     }
 
-
     return (
         <main>
             <section id="product-listing-section" className="dsc-container">
@@ -114,9 +113,12 @@ export default function UserListing() {
                     <thead>
                     <tr>
                         <th className="dsc-tb576">ID</th>
-                        <th className="dsc-tb768">Avatar</th>
+                        <th className="dsc-tb576">Avatar</th>
                         <th className="dsc-txt-left">Nome</th>
+                        <th className="dsc-txt-left">Sobrenome</th>
+                        <th className="dsc-txt-left">Telefone</th>
                         <th className="dsc-tb768">e-mail</th>
+                        <th className="dsc-tb768">Aniversário</th>
                         <th> Editar</th>
                         <th> Excluir</th>
                     </tr>
@@ -126,10 +128,13 @@ export default function UserListing() {
                         
                         users.map(user => (
                             <tr key={user.id}>
-                                <td className="dsc-tb576">{user.id}</td>
+                                <td className="dsc-txt-left">{user.id}</td>
                                 <td><img className="dsc-product-listing-image" src={user.imgUrl} alt={user.name}/></td>
                                 <td className="dsc-txt-left">{user.name}</td>
-                                <td className="dsc-tb768"> {user.email}</td>
+                                <td className="dsc-txt-left">{user.lastName}</td>
+                                <td className="dsc-txt-left">{user.phone}</td>
+                                <td className="dsc-txt-left"> {user.email}</td>
+                                <td className="dsc-txt-left"> {user.birthDate}</td>
                                 <td><img onClick={() => handleUpdateClick(user.id)} className="dsc-product-listing-btn" src={EditIcon} alt="Editar"/></td>
                                 <td><img onClick={() => handleDeleteClick(user.id)} className="dsc-product-listing-btn" src={DeleteIcon} alt="Deletar"/></td>
                             </tr>

@@ -68,7 +68,7 @@ export function hasAnyRoles(roles: RoleEnum[]): boolean {
                 return true;
             }
         }
-    //return roles.some(role => tokenData.authorities.includes(role));
+    // return roles.some(role => tokenData.authorities.includes(role));
     }
     return false;
 }

@@ -64,6 +64,7 @@ main {
   text-align: center;
   color: var(--dsc-color-font-primary);
   font-size: 16px;
+  margin-bottom: 10px !important;
 }
 
 .dsc-txt-left {
@@ -89,6 +90,10 @@ header {
 
 .dsc-header-admin {
   background-color: var(--dsc-color-bg-quaternary);
+  color: var(--dsc-color-font-tertiary);
+}
+.dsc-header-gestor {
+  background-color: var(--dsc-color-btn-primary);
   color: var(--dsc-color-font-tertiary);
 }
 

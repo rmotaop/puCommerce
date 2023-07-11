@@ -20,14 +20,15 @@ export default function LoggedUser() {
         setContextCartCount(contextCartCount)
         navigate("/catalog");
     }
-
+   
     return (
-
+        
         contextTokenPayload && authService.isAuthenticated()
         ?
-            (
-                <div className="dsc-logged-user">
+        (
+            <div className="dsc-logged-user">
                     <p>Olá: {contextTokenPayload.user_name}
+                    
                     <span onClick={handleLogoutClick}>Sair</span>
                     </p>
                 </div>

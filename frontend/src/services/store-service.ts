@@ -4,6 +4,17 @@ import {requestBackend} from "../utils/requests";
 import {Store} from "../types/store";
 
 
+export  function findAllRequest() {
+    const config : AxiosRequestConfig = {
+
+        method: "GET",
+        url: "/stores",
+        
+    }
+
+    return requestBackend(config);
+}
+
 export function findPageRequest(page: number, name: string, size=12, sort = 'name') {
     const config: AxiosRequestConfig = {
         method: 'GET',

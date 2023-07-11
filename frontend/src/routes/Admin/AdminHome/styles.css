@@ -2,6 +2,12 @@
     padding: 20px 0;
 }
 
+section h2 {
+  font-size: 20px !important;
+  margin-top: -9px !important;
+  margin-bottom: -9px !important;
+}
+
 .btn {
 padding: 5px;
 margin-bottom: 5px !important;

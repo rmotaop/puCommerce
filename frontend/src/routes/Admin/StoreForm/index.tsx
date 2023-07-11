@@ -88,7 +88,7 @@ export default function StoreForm() {
     }, [])
 
     useEffect(() => {
-        const result = forms.toDirty(formData, "priceMercade");
+        const result = forms.toDirty(formData, "name");
         console.log(result);
 
         if(isEditing) {

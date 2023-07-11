@@ -2,8 +2,8 @@ import './styles.css';
 import EditIcon from '../../../assets/img/edit.svg';
 import DeleteIcon from '../../../assets/img/delete.svg';
 import {useEffect, useState} from "react";
-import * as storeService from '../../../services/store-service';
-import { Store } from '../../../types/store';
+import * as clientService from '../../../services/client-service';
+import { Client } from '../../../types/client';
 import SearchBar from "../../../components/SearchBar";
 import ButtonNextPage from "../../../components/ButtonNextPage";
 import DialogInfo from "../../../components/DialogInfo";
@@ -14,7 +14,7 @@ import ButtonInverse from "../../../components/ButtonInverse";
 import {useNavigate} from "react-router-dom";
 
 
-export default function StoreListing() {
+export default function ClientListing() {
 
     const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ export default function StoreListing() {
 
     const [isLastPage, setIsLastPage] = useState(false);
 
-    const [stores, setStores] = useState<Store[]>([]);
+    const [clients, setClients] = useState<Client[]>([]);
 
     type QueryParams = {
         page: number;
@@ -44,20 +44,20 @@ export default function StoreListing() {
     })
 
     useEffect(()=>{
-        storeService.findPageRequest(queryParams.page,queryParams.name)
+        clientService.findPageRequest(queryParams.page,queryParams.name)
             .then(response => {
                 const nextPage = response.data.content;
-                setStores(stores.concat(nextPage))
+                setClients(clients.concat(nextPage))
                 setIsLastPage(response.data.last)
             })
     },[queryParams]);
 
-    function handleNewStoreClick() {
-        navigate("/admin/stores/create")
+    function handleNewClientClick() {
+        navigate("/gestor/clients/create")
     }
 
     function handleSearch(searchText: string) {
-        setStores([]);
+        setClients([]);
         setQueryParams({...queryParams,page: 0, name: searchText});
     }
 
@@ -69,20 +69,20 @@ export default function StoreListing() {
         setDialogInfoData({...dialogInfoData, visible: false});
     }
 
-    function handleDeleteClick(storeId: number) {
-        setDialogConfirmationData({...dialogConfirmationData, id: storeId, visible: true});
-        console.log(storeId);
+    function handleDeleteClick(clientId: number) {
+        setDialogConfirmationData({...dialogConfirmationData, id: clientId, visible: true});
+        console.log(clientId);
     }
 
-    function handleUpdateClick(storeId: number) {
-        navigate(`/admin/stores/${storeId}`);
+    function handleUpdateClick(clientId: number) {
+        navigate(`/gestor/clients/${clientId}`);
     }
 
-    function handDialogConfirmationAnswer(answer: boolean, storeId: number) {
+    function handDialogConfirmationAnswer(answer: boolean, clientId: number) {
         if(answer === true) {
-            storeService.deleteById(storeId)
+            clientService.deleteById(clientId)
                 .then(() => {
-                    setStores([]);
+                    setClients([]);
                     setQueryParams({...queryParams,page: 0});
                 })
                 .catch(error => {
@@ -98,12 +98,12 @@ export default function StoreListing() {
 
     return (
         <main>
-            <section id="product-listing-section" className="dsc-container">
-                <h2 className="dsc-section-title dsc-mb20">Cadastro de fornecedor</h2>
+            <section id="client-listing-section" className="dsc-container">
+                <h2 className="dsc-section-title dsc-mb20">Cadastro de produtos</h2>
 
                 <div className="dsc-btn-page-container dsc-mb20">
-                    <div onClick={handleNewStoreClick}>
-                        <ButtonInverse textButton="Novo fornecedor"/>
+                    <div onClick={handleNewClientClick}>
+                        <ButtonInverse textButton="Novo"/>
                     </div>
                 </div>
 
@@ -113,23 +113,30 @@ export default function StoreListing() {
                     <thead>
                     <tr>
                         <th className="dsc-tb576">ID</th>
-                        <th className="dsc-tb576">Logotipo</th>
-                        <th className="dsc-txt-left">Nome Loja</th>
-                        <th className="dsc-tb768">Valor Mercado</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
+                        <th></th>
+                        <th className="dsc-txt-left">Nome</th>
+                        <th className="dsc-txt-left">CPF</th>
+                        <th className="dsc-tb768">Renda Média</th>
+                        <th className="dsc-tb768">Aniversário</th>
+                        <th className="dsc-tb768">Filhos</th>
+                        <th className="dsc-tb768">e-mail</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     {
-                        stores.map(store => (
-                            <tr key={store.id}>
-                                <td className="dsc-tb576">{store.id}</td>
-                                <td><img className="dsc-product-listing-image" src={store.imgUrl} alt={store.name}/></td>
-                                <td className="dsc-txt-left">{store.name}</td>
-                                <td className="dsc-tb768">R$ {store.priceMercade.toFixed(2)}</td>
-                                <td><img onClick={() => handleUpdateClick(store.id)} className="dsc-product-listing-btn" src={EditIcon} alt="Editar"/></td>
-                                <td><img onClick={() => handleDeleteClick(store.id)} className="dsc-product-listing-btn" src={DeleteIcon} alt="Deletar"/></td>
+                        clients.map(client => (
+                            <tr key={client.id}>
+                                <td className="dsc-tb576">{client.id}</td>
+                                <td className="dsc-txt-left">{client.name}</td>
+                                <td className="dsc-txt-left">{client.cpf}</td>
+                                <td className="dsc-tb768">R$ {client.income.toFixed(2)}</td>
+                                <td className="dsc-txt-left">{client.birthdate}</td>
+                                <td className="dsc-txt-left">{client.children}</td>
+                                <td className="dsc-txt-left">{client.email}</td>
+                                <td><img onClick={() => handleUpdateClick(client.id)} className="dsc-client-listing-btn" src={EditIcon} alt="Editar"/></td>
+                                <td><img onClick={() => handleDeleteClick(client.id)} className="dsc-client-listing-btn" src={DeleteIcon} alt="Deletar"/></td>
                             </tr>
                         ))
                     }

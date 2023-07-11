@@ -3,23 +3,24 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import FormInput from "../../../components/FormInput";
 import * as forms from "../../../utils/forms";
-import * as userService from '../../../services/user-service';
-import * as roleService from '../../../services/role-service';
+import * as clientService from '../../../services/client-service';
+import * as storeService from '../../../services/store-service';
 import {dirtyAndValidate} from "../../../utils/forms";
-import {Role} from "../../../types/role";
+import FormTextArea from "../../../components/FormTextArea";
+import {Store} from "../../../types/store";
 import FormSelect from "../../../components/FormSelect";
 import {SelectStyles} from "../../../utils/select";
 import DialogInfo from "../../../components/DialogInfo";
 
-export default function UserForm() {
+export default function ClientForm() {
 
     const params = useParams();
 
     const navigate = useNavigate();
 
-    const isEditing = params.userId !== 'create';
+    const isEditing = params.clientId !== 'create';
 
-    const [rolies, setRolies] = useState<Role[]>([]);
+    const [stores, setStores] = useState<Store[]>([]);
 
     const [formData, setFormData] = useState<any>({
         name: {
@@ -34,29 +35,51 @@ export default function UserForm() {
             },
             message: "Favor informar um nome de 3 a 80 caracteres"
         },
-        lastName: {
+        cpf: {
             value: "",
-            id: "lastName",
-            name: "lastName",
+            id: "cpf",
+            name: "cpf",
             type: "text",
-            placeholder: "Sobrenome",
+            placeholder: "CPF",
             validation: function (value: string) {
                 return /^.{3,80}$/.test(value);
 
             },
-            message: "Favor informar um sobrenome de 3 a 80 caracteres"
+            message: "Favor informar um CPF válido"
         },
-        phone: {
+        income: {
             value: "",
-            id: "phone",
-            name: "phone",
-            type: "text",
-            placeholder: "Telefone de contato",
-            validation: function (value: string) {
-                return /^.{3,80}$/.test(value);
-
+            id: "income",
+            name: "income",
+            type: "number",
+            placeholder: "Renda",
+            validation: function (value: any) {
+                return Number(value) > 0;
             },
-            message: "Favor informar um telefone de contato"
+            message: "Favor informe um renda média"
+        },
+        birthdate: {
+            value: "",
+            id: "birthdate",
+            name: "birthdate",
+            type: "date",
+            placeholder: "Data Aniversário",
+            // validation: function (value: string) {
+            //     return /^.{3,80}$/.test(value);
+
+            // },
+            message: "Favor informar um CPF válido"
+        },
+        children: {
+            value: "",
+            id: "children",
+            name: "children",
+            type: "number",
+            placeholder: "Filhos",
+            validation: function (value: any) {
+                return Number(value) > 0;
+            },
+            message: "Favor quantos filhos tem"
         },
         email: {
             value: "",
@@ -64,65 +87,44 @@ export default function UserForm() {
             name: "email",
             type: "email",
             placeholder: "email",
-            validation: function (value: string) {
-                return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value.toLowerCase());
-            },
+            // validation: function (value: string) {
+            //     return /^.{3,80}$/.test(value);
+
+            // },
             message: "Favor informar um e-mail válido"
         },
-        imgUrl: {
-            value: "",
-            id: "imgUrl",
-            name: "imgUrl",
-            type: "text",
-            placeholder: "Avatar",
-            validation: function (value: string) {
-                return /^.{3,150}$/.test(value);
-            },
-            message: "Favor informar uma URL do avatar válido"
-        },
-        birthDate: {
-            value: "",
-            id: "birthDate",
-            name: "birthDate",
-            type: "date",
-            placeholder: "Data de aniversário",
-            // validation: function () {
-            //     return /\d{2}\/\d{2}\/\d{4}/;
-            // },
-            message: "Favor informar uma data válida"
-        },
-        rolies: {
+        stores: {
             value: [],
-            id: "rolies",
-            name: "rolies",
-            placeholder: "Perfil de acesso",
-            validation: function (value: Role[]) {
+            id: "stores",
+            name: "stores",
+            placeholder: "Loja filiada",
+            validation: function (value: Store[]) {
                 return value.length > 0;
             },
-            message: "Escolha pelo menos uma role"
+            message: "Escolha pelo menos uma loja afiliada"
         }
     })
 
     useEffect(() => {
-        roleService.findAllRequest()
+        storeService.findAllRequest()
             .then(response => {
-                setRolies(response.data);
+                setStores(response.data);
             })
     }, [])
 
     useEffect(() => {
-        const result = forms.toDirty(formData, "name");
+        const result = forms.toDirty(formData, "price");
         console.log(result);
 
         if(isEditing) {
-            userService.findById(Number(params.userId))
+            clientService.findById(Number(params.clientId))
                 .then(response => {
                     const newFormData = forms.updateAll(formData, response.data)
                     setFormData(newFormData);
                 })
         }
     },[]);
-    
+
     const [dialogInfoData, setDialogInfoData] = useState({
         visible: false,
         message: "Operação realizada com sucesso",
@@ -155,12 +157,12 @@ export default function UserForm() {
         const requestBody = forms.toValues(formData);
         console.log(requestBody);
         if(isEditing) {
-            requestBody.id = params.userId;
+            requestBody.id = params.clientId;
         }
         const request = isEditing
-        ? userService.updateRequest(requestBody) : userService.insertRequest(requestBody);
+        ? clientService.updateRequest(requestBody) : clientService.insertRequest(requestBody);
         request.then(() => {
-                navigate("/admin/users");
+                navigate("/gestor/clients");
             }).catch(error => {
                 const newInputs = forms.setBackendErrors(formData,error.response.data.errors)
                 setFormData(newInputs);
@@ -169,10 +171,10 @@ export default function UserForm() {
 
     return (
         <main>
-            <section id="product-form-section" className="dsc-container">
-                <div className="dsc-product-form-container">
+            <section id="client-form-section" className="dsc-container">
+                <div className="dsc-client-form-container">
                     <form className="dsc-card dsc-form" onSubmit={handleSubmit}>
-                        <h2>Dados do Usuário</h2>
+                        <h2>Dados do cliente</h2>
                         <div className="dsc-form-controls-container">
                             <div>
                                 <FormInput
@@ -185,21 +187,39 @@ export default function UserForm() {
                             </div>
                             <div>
                                 <FormInput
-                                    { ...formData.lastName }
+                                    { ...formData.cpf }
                                     onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                     className="dsc-form-control"
                                 />
-                                <div className="dsc-form-error">{formData.lastName.message}</div>
+                                <div className="dsc-form-error">{formData.cpf.message}</div>
                             </div>
                             <div>
                                 <FormInput
-                                    { ...formData.phone }
+                                    { ...formData.income }
                                     onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                     className="dsc-form-control"
                                 />
-                                <div className="dsc-form-error">{formData.phone.message}</div>
+                                <div className="dsc-form-error">{formData.income.message}</div>
+                            </div>
+                            <div>
+                                <FormInput
+                                    { ...formData.birthdate }
+                                    onTurnDirty={handleTurnDirty}
+                                    onChange={handleInputChange}
+                                    className="dsc-form-control"
+                                />
+                                <div className="dsc-form-error">{formData.birthdate.message}</div>
+                            </div>
+                            <div>
+                                <FormInput
+                                    { ...formData.children }
+                                    onTurnDirty={handleTurnDirty}
+                                    onChange={handleInputChange}
+                                    className="dsc-form-control"
+                                />
+                                <div className="dsc-form-error">{formData.children.message}</div>
                             </div>
                             <div>
                                 <FormInput
@@ -211,45 +231,27 @@ export default function UserForm() {
                                 <div className="dsc-form-error">{formData.email.message}</div>
                             </div>
                             <div>
-                                <FormInput
-                                    { ...formData.imgUrl }
-                                    onTurnDirty={handleTurnDirty}
-                                    onChange={handleInputChange}
-                                    className="dsc-form-control"
-                                />
-                                <div className="dsc-form-error">{formData.imgUrl.message}</div>
-                            </div>
-                            <div>
-                                <FormInput
-                                    { ...formData.birthDate }
-                                    onTurnDirty={handleTurnDirty}
-                                    onChange={handleInputChange}
-                                    className="dsc-form-control"
-                                />
-                                <div className="dsc-form-error">{formData.birthDate.message}</div>
-                            </div>
-                            <div>
                                 <FormSelect
-                                    { ...formData.rolies }
+                                    { ...formData.stores }
                                     className="dsc-form-control dsc-form-select-container"
                                     styles={SelectStyles}
-                                    options={rolies}
+                                    options={stores}
                                     onChange={(obj: any) => {
-                                        const newFormdata = forms.updateAndValidate(formData, "rolies", obj);
+                                        const newFormdata = forms.updateAndValidate(formData, "stores", obj);
                                         setFormData(newFormdata);
                                     }}
                                     onTurnDirty={handleTurnDirty}
                                     isMulti
-                                    getOptionLabel={(obj: any) => obj.authority }
+                                    getOptionLabel={(obj: any) => obj.name }
                                     getOptionValue={(obj: any) => String(obj.id)}
                                 />
-                                <div className="dsc-form-error">{formData.rolies.message}</div>
+                                <div className="dsc-form-error">{formData.stores.message}</div>
                             </div>
 
                         </div>
 
-                        <div className="dsc-product-form-buttons">
-                            <Link to="/admin/users">
+                        <div className="dsc-client-form-buttons">
+                            <Link to="/gestor/clients">
                                 <button type="reset" className="dsc-btn dsc-btn-white">Cancelar</button>
                             </Link>
 

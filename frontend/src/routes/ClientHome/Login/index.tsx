@@ -6,6 +6,7 @@ import {Link, Navigate, useNavigate} from "react-router-dom";
 import {ContextToken} from "../../../utils/context-token";
 import FormInput from "../../../components/FormInput";
 import {dirtyAndValidate} from "../../../utils/forms";
+import MainImage from '../../../assets/img/puCommerce.svg';
 
 export  default function Login() {
 
@@ -63,9 +64,12 @@ export  default function Login() {
     return (
         <main>
             <section id="login-section" className="dsc-container">
+                
                 <div className="dsc-login-form-container">
                     <form className="dsc-card dsc-form" onSubmit={handleSubmit}>
                         <h2>Login</h2>
+                                <img className="img" src={MainImage} alt="MainImage"/>
+
                         <div className="dsc-form-controls-container">
                             <div>
                                 <FormInput
@@ -91,6 +95,7 @@ export  default function Login() {
                         </div>
                     </form>
                 </div>
+
             </section>
         </main>
     )

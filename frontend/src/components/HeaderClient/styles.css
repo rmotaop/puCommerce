@@ -2,6 +2,10 @@
     background-color: var(--dsc-color-bg-secondary);
     color: var(--dsc-color-font-primary);
   }
+  .dsc-header-client .logUser {
+ 
+    margin-right: 100px;
+  }
 
   .logUser{
     position: relative;
@@ -11,3 +15,4 @@
 .dsc-navbar-right .dsc-menu-items-container .dsc-menu-item .span {
   margin-left: 5px !important;
 }
+

@@ -1,51 +1,55 @@
-
-
 import axios, { AxiosRequestConfig } from "axios";
 import { BASE_URL } from "../utils/system";
 import {requestBackend} from "../utils/requests";
-import {Role} from "../types/role";
+import {Client} from "../types/client";
 
 
-export  function findAllRequest() {
-    const config : AxiosRequestConfig = {
-
-        method: "GET",
-        url: "/rolies",
+export function findPageRequest(page: number, name: string, size=12, sort = 'name') {
+    const config: AxiosRequestConfig = {
+        method: 'GET',
+        url: '/clients',
+        params: {
+            page: page,
+            name: name,
+            size: size,
+            sort: sort
+        }
     }
+
     return requestBackend(config);
 }
 
 export function findById(id: number) {
-    return requestBackend({ url:`/roles/${id}` })
+    return requestBackend({ url:`/clients/${id}` })
 }
  
 export function deleteById(id: number) {
     const config: AxiosRequestConfig = {
         method: 'DELETE',
-        url: `/rolies/${id}`,
+        url: `/clients/${id}`,
         withCredentials: true
     }
 
     return requestBackend(config);
 }
 
-export function updateRequest(role: Role) {
+export function updateRequest(client: Client) {
     const config: AxiosRequestConfig = {
         method: 'PUT',
-        url: `/rolies/${role.id}`,
+        url: `/clients/${client.id}`,
         withCredentials: true,
-        data: role
+        data: client
     }
 
     return requestBackend(config);
 }
 
-export function insertRequest(role: Role) {
+export function insertRequest(client: Client) {
     const config: AxiosRequestConfig = {
         method: 'POST',
-        url: `/rolies`,
+        url: `/clients`,
         withCredentials: true,
-        data: role
+        data: client
     }
     return requestBackend(config);
 }

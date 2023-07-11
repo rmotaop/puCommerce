@@ -9,7 +9,7 @@
 }
 
 .dsc-search-bar input {
-  width: calc(100% - 80px);
+  width: calc(100% - 90px);
   border-left: none;
   border-right: none;
   padding: 0 10px;

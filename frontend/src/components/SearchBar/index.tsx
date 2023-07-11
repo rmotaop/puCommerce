@@ -34,6 +34,7 @@ export default function SearchBar({onSearch} : Props) {
           onChange={handleChange}
           />
           <button onClick={handleResetClick}>🗙</button>
+          
         </form>
     );
 }

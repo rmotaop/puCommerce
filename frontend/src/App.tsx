@@ -20,6 +20,8 @@ import * as cartService from './services/cart-service';
 import Confirmation from "./routes/ClientHome/Confirmation";
 import ProductListing from "./routes/Admin/ProductListing";
 import ProductForm from "./routes/Admin/ProductForm";
+import ClientListing from "./routes/Gestor/ClientListing";
+import ClientForm from "./routes/Gestor/ClientForm";
 import StoreForm from "./routes/Admin/StoreForm";
 import StoreListing from "./routes/Admin/StoreListing";
 import StoreHome from "./routes/Admin/StoreHome";
@@ -47,6 +49,7 @@ export default function App() {
             <ContextCartCount.Provider value={{ contextCartCount, setContextCartCount }}>
                 <HistoryRouter history={history}>
                     <Routes>
+                        
                         <Route path="/" element={<ClientHome />}>
                             <Route index element={<Catalog />} />
                             <Route path="catalog" element={<Catalog />} />
@@ -65,7 +68,7 @@ export default function App() {
                             <Route index element={<Navigate to="/admin/store"/>} />
                             <Route path="store" element={<StoreHome />} />
                             <Route path="stores" element={<StoreListing />}/>
-                            <Route path="stores/:productId" element={<StoreForm />}/>
+                            <Route path="stores/:storeId" element={<StoreForm />}/>
                         </Route>
                         <Route path="/admin/" element={<PrivateRoute roles={['ROLE_ADMIN']}><Admin/></PrivateRoute>}>
                             <Route index element={<Navigate to="/admin/user"/>} />
@@ -76,9 +79,11 @@ export default function App() {
 
                         <Route path="/gestor/" element={<PrivateRoute roles={['ROLE_GESTOR']}><Gestor/></PrivateRoute>}>
                             <Route index element={<Navigate to="/gestor/home"/>} />
-                            <Route path="gestor" element={<GestorHome />} />
+                            <Route path="home" element={<GestorHome />} />
                             <Route path="products" element={<ProductListing />}/>
                             <Route path="products/:productId" element={<ProductForm />}/>
+                            <Route path="clients" element={<ClientListing />}/>
+                            <Route path="clients/:clientId" element={<ClientForm />}/>
                         </Route>
 
 

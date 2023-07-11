@@ -2,6 +2,7 @@ import './styles.css';
 import {Link} from 'react-router-dom';
 import CartIcon from "../CartIcon";
 import iconAdmin from '../../assets/img/admin.svg';
+import people from '../../assets/img/people.svg';
 import * as authService from '../../services/auth-service'
 import {useContext} from "react";
 import {ContextToken} from "../../utils/context-token";
@@ -28,14 +29,26 @@ export default function HeaderClient() {
                                     <img src={iconAdmin}/>
                                     <span className="span">Admin</span>
                                 </div>
+                            </Link> 
+                            || 
+                            authService.hasAnyRoles(['ROLE_GESTOR']) &&
+                            <Link to="/gestor">
+                                <div className="dsc-menu-item">
+                                    <img src={people}/>
+                                    <span className="span">Gestor</span>
+                                </div>
                             </Link>
+
                         }
+                    
                         <Link to="/cart">
                             <div className="dsc-menu-item">
                                 <CartIcon/>
                                 <span className="span">Carrinho</span>
                             </div>
                         </Link>
+
+                      
                     </div>
                     <div className="logUser">
                        <LoggedUser/>
