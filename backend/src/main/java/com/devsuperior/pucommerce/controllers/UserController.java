@@ -1,6 +1,5 @@
 package com.devsuperior.pucommerce.controllers;
 
-import com.devsuperior.pucommerce.dto.StoreMinDTO;
 import com.devsuperior.pucommerce.dto.UserDTO;
 import com.devsuperior.pucommerce.dto.UserInsertDTO;
 import com.devsuperior.pucommerce.dto.UserUpdateDTO;
@@ -36,6 +35,12 @@ public class UserController {
             @RequestParam(name = "name", defaultValue = "") String name, Pageable pageable) {
         Page<UserDTO> page = service.findAll(name, pageable);
         return ResponseEntity.ok().body(page);
+    }
+
+	@GetMapping(value = "/{id}")
+    public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
+        UserDTO dto = service.findById(id);
+        return ResponseEntity.ok().body(dto);
     }
 
 	@PostMapping

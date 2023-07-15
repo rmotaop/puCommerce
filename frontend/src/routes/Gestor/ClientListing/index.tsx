@@ -99,7 +99,7 @@ export default function ClientListing() {
     return (
         <main>
             <section id="client-listing-section" className="dsc-container">
-                <h2 className="dsc-section-title dsc-mb20">Cadastro de produtos</h2>
+                <h2 className="dsc-section-title dsc-mb20">Cadastro de clientes</h2>
 
                 <div className="dsc-btn-page-container dsc-mb20">
                     <div onClick={handleNewClientClick}>
@@ -112,27 +112,27 @@ export default function ClientListing() {
                 <table className="dsc-table dsc-mb20 dsc-mt20">
                     <thead>
                     <tr>
-                        <th className="dsc-tb576">ID</th>
-                        <th></th>
+                        <th className="dsc-txt-left">ID</th>
+                        
                         <th className="dsc-txt-left">Nome</th>
                         <th className="dsc-txt-left">CPF</th>
-                        <th className="dsc-tb768">Renda Média</th>
-                        <th className="dsc-tb768">Aniversário</th>
-                        <th className="dsc-tb768">Filhos</th>
-                        <th className="dsc-tb768">e-mail</th>
-                        <th></th>
-                        <th></th>
+                        <th className="dsc-txt-left">Renda</th>
+                        <th className="dsc-txt-left">Aniversário</th>
+                        <th className="dsc-txt-left">Filhos</th>
+                        <th className="dsc-txt-left">e-mail</th>
+                        <th>Editar</th>
+                        <th>Excluir</th>
                     </tr>
                     </thead>
                     <tbody>
                     {
                         clients.map(client => (
                             <tr key={client.id}>
-                                <td className="dsc-tb576">{client.id}</td>
+                                <td className="dsc-txt-left">{client.id}</td>
                                 <td className="dsc-txt-left">{client.name}</td>
                                 <td className="dsc-txt-left">{client.cpf}</td>
-                                <td className="dsc-tb768">R$ {client.income.toFixed(2)}</td>
-                                <td className="dsc-txt-left">{client.birthdate}</td>
+                                <td className="dsc-txt-left">R$ {client.income.toFixed(2)}</td>
+                                <td className="dsc-txt-left">{client.birthDate}</td>
                                 <td className="dsc-txt-left">{client.children}</td>
                                 <td className="dsc-txt-left">{client.email}</td>
                                 <td><img onClick={() => handleUpdateClick(client.id)} className="dsc-client-listing-btn" src={EditIcon} alt="Editar"/></td>

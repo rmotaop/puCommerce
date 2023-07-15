@@ -1,10 +1,8 @@
 package com.devsuperior.pucommerce.controllers;
 
-import com.devsuperior.pucommerce.dto.StoreDTO;
-import com.devsuperior.pucommerce.dto.StoreInsertDTO;
-import com.devsuperior.pucommerce.dto.StoreUpdateDTO;
-import com.devsuperior.pucommerce.dto.StoreMinDTO;
-import com.devsuperior.pucommerce.services.StoreService;
+import com.devsuperior.pucommerce.dto.ClientDTO;
+import com.devsuperior.pucommerce.dto.ClientMinDTO;
+import com.devsuperior.pucommerce.services.ClientService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,49 +12,48 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "/stores")
-public class StoreController {
+@RequestMapping(value = "/clients")
+public class ClientController {
 
     @Autowired
-    private StoreService storeService;
+    private ClientService clientService;
 
     @GetMapping
-    public ResponseEntity<Page<StoreMinDTO>> findAll(
+    public ResponseEntity<Page<ClientMinDTO>> findAll(
             @RequestParam(name = "name", defaultValue = "") String name, Pageable pageable) {
-        Page<StoreMinDTO> page = storeService.findAll(name, pageable);
+        Page<ClientMinDTO> page = clientService.findAll(name, pageable);
         return ResponseEntity.ok().body(page);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<StoreDTO> findById(@PathVariable Long id) {
-        StoreDTO dto = storeService.findById(id);
+    public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
+        ClientDTO dto = clientService.findById(id);
         return ResponseEntity.ok().body(dto);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_GESTOR')")
     @PostMapping
-    public ResponseEntity<StoreDTO> insert(@Valid @RequestBody StoreDTO dto) {
-        dto = storeService.insert(dto);
+    public ResponseEntity<ClientDTO> insert(@Valid @RequestBody ClientDTO dto) {
+        dto = clientService.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_GESTOR')")
     @PutMapping(value = "/{id}")
-    public ResponseEntity<StoreDTO> update(@PathVariable Long id,@Valid @RequestBody StoreDTO dto) {
-        dto = storeService.update(id, dto);
+    public ResponseEntity<ClientDTO> update(@PathVariable Long id,@Valid @RequestBody ClientDTO dto) {
+        dto = clientService.update(id, dto);
         return ResponseEntity.ok().body(dto);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_GESTOR')")
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        storeService.delete(id);
+        clientService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

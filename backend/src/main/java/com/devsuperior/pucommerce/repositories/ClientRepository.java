@@ -1,6 +1,6 @@
 package com.devsuperior.pucommerce.repositories;
 
-import com.devsuperior.pucommerce.entities.User;
+import com.devsuperior.pucommerce.entities.Client;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,12 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface ClientRepository extends JpaRepository<Client, Long> {
 
-    User findByEmail(String email);
-
-    @Query("SELECT obj FROM User obj "
+    @Query("SELECT obj FROM Client obj "
             + "WHERE UPPER(obj.name) LIKE UPPER(CONCAT('%', :name, '%'))")
-    Page<User> searchByName(String name, Pageable pageable);
-
+    Page<Client> searchByName(String name, Pageable pageable);
 }

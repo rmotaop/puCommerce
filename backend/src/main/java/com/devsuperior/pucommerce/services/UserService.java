@@ -1,7 +1,9 @@
 package com.devsuperior.pucommerce.services;
 
-import java.util.Optional;
+
+import com.devsuperior.pucommerce.dto.RoleDTO;
 import com.devsuperior.pucommerce.dto.UserDTO;
+
 import com.devsuperior.pucommerce.entities.Role;
 import com.devsuperior.pucommerce.entities.User;
 import com.devsuperior.pucommerce.repositories.UserRepository;
@@ -22,6 +24,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -104,19 +108,20 @@ public class UserService implements UserDetailsService {
 
     public void copyDtoToEntity(User entity, UserDTO dto) {
         entity.setName(dto.getName());
+        entity.setLastName(dto.getLastName());
         entity.setEmail(dto.getEmail());
         entity.setPhone(dto.getPhone());
         entity.setBirthDate(dto.getBirthDate());
-
-        entity.getRoles().clear();
-        for (String roleDto : dto.getRoles()) {
-        Role Role = new Role();
-        // Role.setId(roleDto.getId());   VERIFICAR
-        entity.getRoles().add(Role);
+        entity.setImgUrl(dto.getImgUrl());
+        entity.getRolies().clear();
+        for (RoleDTO rolDto : dto.getRolies()) {
+            Role rol = new Role();
+            rol.setId(rolDto.getId());
+            entity.getRolies().add(rol);
         }
     }
 
-    public Page<UserDTO> findAllPaged(Pageable pageable) {
+    public Page<UserDTO> findAllPaged(String roleId, String authority, Pageable pageable) {
         return null;
     }
 

@@ -1,8 +1,10 @@
 package com.devsuperior.pucommerce.controllers;
 
 import com.devsuperior.pucommerce.dto.RoleDTO;
+import com.devsuperior.pucommerce.dto.UserDTO;
 import com.devsuperior.pucommerce.services.RoleService;
-import javax.validation.Valid;
+import com.devsuperior.pucommerce.services.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,20 +13,22 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
-@RequestMapping(value = "/roles")
+@RequestMapping(value = "/rolies")
 public class RoleController {
 
     @Autowired
     private RoleService roleService;
 
     @GetMapping
-    public ResponseEntity<Page<RoleDTO>> findAll(
-            @RequestParam(name = "name", defaultValue = "") String authority, Pageable pageable) {
-        Page<RoleDTO> page = roleService.findAll(authority, pageable);
-        return ResponseEntity.ok().body(page);
+    public ResponseEntity<List<RoleDTO>> findAll(
+            @RequestParam(name = "authority", defaultValue = "") String authority) {
+        List<RoleDTO> list = roleService.findAll(authority);
+        return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")

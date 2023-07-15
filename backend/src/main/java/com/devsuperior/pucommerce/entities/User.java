@@ -18,6 +18,8 @@ public class User implements UserDetails, Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    
+    private String lastName;
 
     @Column(unique = true)
     private String email;
@@ -34,14 +36,15 @@ public class User implements UserDetails, Serializable {
     @JoinTable(name = "tb_user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> rolies = new HashSet<>();
 
     public User () {
     }
 
-    public User(Long id, String name, String email, String phone, LocalDate birthDate, String password, String imgUrl) {
+    public User(Long id, String name, String lastName, String email, String phone, LocalDate birthDate, String password, String imgUrl) {
         this.id = id;
         this.name = name;
+        this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.birthDate = birthDate;
@@ -63,6 +66,14 @@ public class User implements UserDetails, Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -109,26 +120,35 @@ public class User implements UserDetails, Serializable {
         return orders;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Set<Role> getRolies() {
+        return rolies;
+        
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id);
+    public void addRole(Role role) {
+    	rolies.add(role);
     }
-
     public boolean hasRole(String roleName) {
-        for(Role role : roles) {
-            if(role.getAuthority().equals(roleName)) {
-                return true;
-            }
-        }
-        return false;
-    }
+       for(Role role : rolies) {
+             if(role.getAuthority().equals(roleName)) {
+                 return true;
+             }
+         }
+         return false;
+     }
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(id, other.id);
+	}
+
 
     @Override
     public int hashCode() {
@@ -160,9 +180,11 @@ public class User implements UserDetails, Serializable {
         return true;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
-    }
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return rolies;
+	}
+
 
 }

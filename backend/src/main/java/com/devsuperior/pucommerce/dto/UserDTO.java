@@ -1,31 +1,47 @@
 package com.devsuperior.pucommerce.dto;
 
 import com.devsuperior.pucommerce.entities.User;
+import com.devsuperior.pucommerce.entities.Role;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale.Category;
+
+import javax.validation.constraints.*;
 
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+
+    @Size(min = 3,max = 80, message = "Campo deve ser o nome completo")
+    @NotNull(message = "nome nao pode ser nulo")
+    @NotBlank(message = "Campo deve ser preenchido")
     private String name;
+
+    @NotBlank(message = "Campo deve ser preenchido")
+    private String lastName;
+
+    @NotBlank(message = "e-mail deve ser preenchido")
     private String email;
     private String phone;
     private LocalDate birthDate;
-    List<String> Roles = new ArrayList<>();
+
+    @NotEmpty(message = "Deve ter pelo menos uma autorização")
+    private List<RoleDTO> rolies = new ArrayList<>();
 
     private String imgUrl;
 
     public UserDTO() {
     }
 
-    public UserDTO(Long id, String name, String email, String phone, LocalDate birthDate, String imgUrl) {
+    public UserDTO(Long id, String name, String lastName, String email, String phone, LocalDate birthDate, String imgUrl) {
         this.id = id;
         this.name = name;
+        this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.birthDate = birthDate;
@@ -36,12 +52,13 @@ public class UserDTO implements Serializable {
     public UserDTO(User entity) {
         this.id = entity.getId();
         this.name = entity.getName();
+        this.lastName = entity.getLastName();
         this.email = entity.getEmail();
         this.phone = entity.getPhone();
         this.birthDate = entity.getBirthDate();
         this.imgUrl = entity.getImgUrl();
-        for(GrantedAuthority role : entity.getAuthorities()) {
-            getRoles().add(role.getAuthority());
+        for (Role rol : entity.getRolies()) {
+            rolies.add(new RoleDTO(rol));
         }
     }
 
@@ -59,6 +76,14 @@ public class UserDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -93,8 +118,8 @@ public class UserDTO implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public List<String> getRoles() {
-        return Roles;
+    public List<RoleDTO> getRolies() {
+        return rolies;
     }
 
 }

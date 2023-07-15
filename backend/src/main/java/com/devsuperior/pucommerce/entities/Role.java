@@ -4,7 +4,10 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 @Entity
 @Table(name = "tb_role")
 public class Role implements GrantedAuthority, Serializable {
@@ -15,6 +18,8 @@ public class Role implements GrantedAuthority, Serializable {
     private Long id;
     private String authority;
 
+    @ManyToMany(mappedBy = "rolies")
+    private Set<User> users = new HashSet<>();
 
 
     public Role() {
@@ -41,6 +46,11 @@ public class Role implements GrantedAuthority, Serializable {
     public void setAuthority(String authority) {
         this.authority = authority;
     }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
 
     @Override
     public boolean equals(Object o) {

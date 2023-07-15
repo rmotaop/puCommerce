@@ -31,6 +31,7 @@ export default function HeaderClient() {
                                 </div>
                             </Link> 
                             || 
+                            contextTokenPayload &&
                             authService.hasAnyRoles(['ROLE_GESTOR']) &&
                             <Link to="/gestor">
                                 <div className="dsc-menu-item">

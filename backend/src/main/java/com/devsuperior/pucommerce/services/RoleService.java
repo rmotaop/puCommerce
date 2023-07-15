@@ -9,13 +9,13 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RoleService {
@@ -24,9 +24,9 @@ public class RoleService {
     private RoleRepository roleRepository;
 
     @Transactional(readOnly = true)
-    public Page<RoleDTO> findAll(String authority, Pageable pageable) {
-        Page<Role> page = roleRepository.searchByAuthority(authority, pageable);
-        return page.map(x -> new RoleDTO(x));
+    public List<RoleDTO> findAll(String authority) {
+    	List<Role> list = roleRepository.searchByAuthority(authority);
+    	return list.stream().map(x -> new RoleDTO(x)).collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)

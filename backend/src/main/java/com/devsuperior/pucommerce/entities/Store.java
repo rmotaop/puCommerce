@@ -25,6 +25,7 @@ public class Store {
 
 	@Column(columnDefinition = "TEXT")
     private String description;
+    
     private Double priceMercade;
     private String imgUrl;
 	

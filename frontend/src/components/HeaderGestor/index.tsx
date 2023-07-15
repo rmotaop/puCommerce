@@ -22,13 +22,13 @@ export default function HeaderGestor() {
                         <NavLink to="/gestor/products"  className={({isActive}) => isActive ? "dsc-menu-item-active" : ""}>
                             <div className="dsc-menu-item">
                                 <img src={stockIcon} alt="Cadastro de produtos"/>
-                                <p>Produtos Loja</p>
+                                <p>Produtos da Loja</p>
                             </div>
                         </NavLink>
-                        <NavLink to="/admin/clients"  className={({isActive}) => isActive ? "dsc-menu-item-active" : ""}>
+                        <NavLink to="/gestor/clients"  className={({isActive}) => isActive ? "dsc-menu-item-active" : ""}>
                             <div className="dsc-menu-item">
                                 <img src={clientes} alt="Clientes"/>
-                                <p>Usuários</p>
+                                <p>Clientes loja</p>
                             </div>
                         </NavLink>
                     </div>

@@ -1,8 +1,17 @@
 package com.devsuperior.pucommerce.dto;
 
-import com.devsuperior.pucommerce.entities.Role;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Locale.Category;
 
-public class RoleDTO {
+import com.devsuperior.pucommerce.entities.Product;
+import com.devsuperior.pucommerce.entities.Role;
+import com.devsuperior.pucommerce.entities.User;
+
+
+
+public class RoleDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
 
 	private Long id;
 	private String authority;
@@ -16,11 +25,15 @@ public class RoleDTO {
 		this.authority = authority;
 	}
 
-	public RoleDTO(Role role) {
+	public RoleDTO(Role entity) {
 		super();
-		id = role.getId();
-		authority = role.getAuthority();
+		this.id = entity.getId();
+		this.authority = entity.getAuthority();
 	}
+
+	public RoleDTO(Role entity, List<User> users) {
+        this(entity);
+    }
 	
 	public Long getId() {
 		return id;

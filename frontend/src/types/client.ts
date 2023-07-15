@@ -5,7 +5,7 @@ export type Client = {
     name: string;
     cpf: string;
     income: number;
-    birthdate: string;
+    birthDate: string;
     children: number;
     email: string;
     stores: Store[];

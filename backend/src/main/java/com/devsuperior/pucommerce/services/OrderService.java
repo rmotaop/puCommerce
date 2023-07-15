@@ -22,7 +22,7 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     @Autowired
-    private UserService userService;
+    private ClientService clientService;
 
     @Autowired
     private ProductRepository productRepository;
@@ -47,8 +47,8 @@ public class OrderService {
         order.setMoment(Instant.now());
         order.setStatus(OrderStatus.WAITING_PAYMENT);
 
-        User user = userService.authenticated();
-        order.setClient(user);
+        Client client = clientService.authenticated();
+        order.setClient(client);
 
         for (OrderItemDTO itemDTO : dto.getItems()) {
             Product product = productRepository.getReferenceById(itemDTO.getProductId());

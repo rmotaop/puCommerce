@@ -35,7 +35,7 @@ public class ProductDTO implements Serializable {
     private List<CategoryDTO> categories = new ArrayList<>();
 
     @NotEmpty(message = "Deve ter pelo menos um fornecedor")
-    private List<StoreDTO> stories = new ArrayList<>();
+    private List<StoreDTO> stores = new ArrayList<>();
 
     public ProductDTO(){
     }
@@ -57,8 +57,8 @@ public class ProductDTO implements Serializable {
         for (Category cat : entity.getCategories()) {
             categories.add(new CategoryDTO(cat));
         }
-        for (Store sto : entity.getStories()) {
-            stories.add(new StoreDTO(sto));
+        for (Store sto : entity.getStores()) {
+            stores.add(new StoreDTO(sto));
         }
     }
 
@@ -105,7 +105,7 @@ public class ProductDTO implements Serializable {
     public List<CategoryDTO> getCategories() {
         return categories;
     }
-    public List<StoreDTO> getStories() {
-        return stories;
+    public List<StoreDTO> getStores() {
+        return stores;
     }
 }

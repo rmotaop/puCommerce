@@ -1,6 +1,7 @@
 package com.devsuperior.pucommerce.services;
 
 import com.devsuperior.pucommerce.dto.CategoryDTO;
+import com.devsuperior.pucommerce.dto.ProductDTO;
 import com.devsuperior.pucommerce.dto.StoreDTO;
 import com.devsuperior.pucommerce.dto.StoreMinDTO;
 import com.devsuperior.pucommerce.entities.Category;
@@ -84,5 +85,9 @@ public class StoreService {
             cat.setId(catDto.getId());
             entity.getCategories().add(cat);
         }
+    }
+
+        public Page<StoreDTO> findAllPaged(String categoryId, String name, Pageable pageable) {
+        return null;
     }
 }

@@ -58,10 +58,10 @@ export default function ClientForm() {
             },
             message: "Favor informe um renda média"
         },
-        birthdate: {
+        birthDate: {
             value: "",
-            id: "birthdate",
-            name: "birthdate",
+            id: "birthDate",
+            name: "birthDate",
             type: "date",
             placeholder: "Data Aniversário",
             // validation: function (value: string) {
@@ -98,9 +98,9 @@ export default function ClientForm() {
             id: "stores",
             name: "stores",
             placeholder: "Loja filiada",
-            validation: function (value: Store[]) {
-                return value.length > 0;
-            },
+            // validation: function (value: Store[]) {
+            //     return value.length > 0;
+            // },
             message: "Escolha pelo menos uma loja afiliada"
         }
     })
@@ -113,7 +113,7 @@ export default function ClientForm() {
     }, [])
 
     useEffect(() => {
-        const result = forms.toDirty(formData, "price");
+        const result = forms.toDirty(formData, "name");
         console.log(result);
 
         if(isEditing) {
@@ -205,12 +205,12 @@ export default function ClientForm() {
                             </div>
                             <div>
                                 <FormInput
-                                    { ...formData.birthdate }
+                                    { ...formData.birthDate }
                                     onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                     className="dsc-form-control"
                                 />
-                                <div className="dsc-form-error">{formData.birthdate.message}</div>
+                                <div className="dsc-form-error">{formData.birthDate.message}</div>
                             </div>
                             <div>
                                 <FormInput

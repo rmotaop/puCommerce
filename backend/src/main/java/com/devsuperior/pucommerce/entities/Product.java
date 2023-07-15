@@ -32,7 +32,7 @@ public class Product implements Serializable {
     @JoinTable(name = "tb_product_store",
         joinColumns = @JoinColumn(name = "product_id"),
         inverseJoinColumns = @JoinColumn(name = "store_id"))
-    private Set<Store> stories = new HashSet<>();
+    private Set<Store> stores = new HashSet<>();
 
     @OneToMany(mappedBy = "id.product")
     private Set<OrderItem> items = new HashSet<>();
@@ -91,8 +91,8 @@ public class Product implements Serializable {
     public Set<Category> getCategories() {
         return categories;
     }
-    public Set<Store> getStories() {
-        return stories;
+    public Set<Store> getStores() {
+        return stores;
     }
 
     public Set<OrderItem> getItems() {

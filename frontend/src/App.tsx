@@ -82,6 +82,9 @@ export default function App() {
                             <Route path="home" element={<GestorHome />} />
                             <Route path="products" element={<ProductListing />}/>
                             <Route path="products/:productId" element={<ProductForm />}/>
+                        </Route>
+                        <Route path="/gestor/" element={<PrivateRoute roles={['ROLE_GESTOR']}><Gestor/></PrivateRoute>}>
+                            <Route index element={<Navigate to="/gestor/client"/>} />
                             <Route path="clients" element={<ClientListing />}/>
                             <Route path="clients/:clientId" element={<ClientForm />}/>
                         </Route>
