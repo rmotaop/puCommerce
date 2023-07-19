@@ -1,10 +1,11 @@
 import './styles.css';
 import {Link} from 'react-router-dom';
+import {useContext} from "react";
 import CartIcon from "../CartIcon";
 import iconAdmin from '../../assets/img/admin.svg';
+import budget from '../../assets/img/budget.svg';
 import people from '../../assets/img/people.svg';
 import * as authService from '../../services/auth-service'
-import {useContext} from "react";
 import {ContextToken} from "../../utils/context-token";
 import LoggedUser from "../LoggedUser";
 
@@ -27,7 +28,7 @@ export default function HeaderClient() {
                             <Link to="/admin">
                                 <div className="dsc-menu-item">
                                     <img src={iconAdmin}/>
-                                    <span className="span">Admin</span>
+                                    <span className="span">Área Admin</span>
                                 </div>
                             </Link> 
                             || 
@@ -46,6 +47,13 @@ export default function HeaderClient() {
                             <div className="dsc-menu-item">
                                 <CartIcon/>
                                 <span className="span">Carrinho</span>
+                            </div>
+                        </Link>
+
+                        <Link to="/myorder">
+                            <div className="dsc-menu-item">
+                                <img src={budget}/>
+                                <span className="span">Meus pedidos</span>
                             </div>
                         </Link>
 

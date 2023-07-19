@@ -19,14 +19,14 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_GESTOR', 'ROLE_CLIENT')")
+    // @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping(value = "/{id}")
     public ResponseEntity<OrderDTO> findById(@PathVariable Long id) {
         OrderDTO dto = orderService.findById(id);
         return ResponseEntity.ok().body(dto);
     }
 
-    @PreAuthorize("hasRole('ROLE_CLIENT')")
+    // @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<OrderDTO> insert(@Valid @RequestBody OrderDTO dto) {
         dto = orderService.insert(dto);
@@ -35,7 +35,7 @@ public class OrderController {
         return ResponseEntity.created(uri).body(dto);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    // @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping(value = "/{id}/payment")
     public ResponseEntity<OrderDTO> setPayment(@PathVariable Long id) {
         OrderDTO dto = orderService.setPayment(id);

@@ -43,6 +43,7 @@ export default function Cart() {
               setContextCartCount(0);
               navigate(`/confirmation/${response.data.id}`);
             });
+           
     }
 
     return (

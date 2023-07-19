@@ -42,7 +42,7 @@ export  default function Login() {
             .then(response => {
                 authService.saveAccessToken(response.data.access_token);
                 setContextTokenPayload(authService.getAccessTokenPayload());
-                navigate("/cart");
+                navigate("/catalog");
             }).catch(error => {
                console.log("Erro no login", error);
             })
@@ -92,6 +92,9 @@ export  default function Login() {
 
                         <div className="dsc-login-form-buttons dsc-mt20">
                             <button type="submit" className="dsc-btn dsc-btn-blue">Entrar</button>
+                        </div>
+                        <div className="dsc-login-form-buttons dsc-mt20">
+                            <Link to="" className="dsc-btn dsc-btn-secondary">Registrar</Link>
                         </div>
                     </form>
                 </div>

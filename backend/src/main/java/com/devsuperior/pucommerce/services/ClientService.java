@@ -1,14 +1,13 @@
 package com.devsuperior.pucommerce.services;
 
 import com.devsuperior.pucommerce.dto.StoreDTO;
-import com.devsuperior.pucommerce.dto.UserDTO;
 import com.devsuperior.pucommerce.dto.CategoryDTO;
 import com.devsuperior.pucommerce.dto.ClientDTO;
 import com.devsuperior.pucommerce.dto.ClientMinDTO;
 import com.devsuperior.pucommerce.entities.Store;
-import com.devsuperior.pucommerce.entities.User;
 import com.devsuperior.pucommerce.entities.Category;
 import com.devsuperior.pucommerce.entities.Client;
+import com.devsuperior.pucommerce.entities.User;
 import com.devsuperior.pucommerce.repositories.ClientRepository;
 import com.devsuperior.pucommerce.services.exceptions.DatabaseException;
 import com.devsuperior.pucommerce.services.exceptions.ResourceNotFoundException;
@@ -36,7 +35,12 @@ public class ClientService {
         return new ClientDTO(entity);
     }
 
-    @Transactional(readOnly = true)
+    private Client authenticated() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Transactional(readOnly = true)
     public Page<ClientMinDTO> findAll(String name, Pageable pageable) {
         Page<Client> page = clientRepository.searchByName(name, pageable);
         return page.map(x -> new ClientMinDTO(x));
@@ -101,13 +105,13 @@ public class ClientService {
         return null;
     }
 
-    protected Client authenticated() {
-        try {
-            String name = SecurityContextHolder.getContext().getAuthentication().getName();
-            return repository.findByEmail(name);
-        }
-        catch (Exception e) {
-            throw new UsernameNotFoundException("Invalid client");
-        }
-    }
+    // protected Client authenticated() {
+    //     try {
+    //         String name = SecurityContextHolder.getContext().getAuthentication().getName();
+    //         return repository.findByEmail(name);
+    //     }
+    //     catch (Exception e) {
+    //         throw new UsernameNotFoundException("Invalid client");
+    //     }
+    // }
 }

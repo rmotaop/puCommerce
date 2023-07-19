@@ -1,7 +1,7 @@
 package com.devsuperior.pucommerce.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -22,7 +22,7 @@ public class Client implements Serializable{
 	private Double income;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant birthDate;
+	private LocalDate birthDate;
 	private Double children;
 
 	@Column(unique = true)
@@ -39,7 +39,7 @@ public class Client implements Serializable{
     }
 
 
-	public Client(Long id, String name, String cpf, Double income, Instant birthDate, Double children, String email, String password) {
+	public Client(Long id, String name, String cpf, Double income, LocalDate birthDate, Double children, String email, String password) {
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
@@ -82,11 +82,11 @@ public class Client implements Serializable{
 		this.income = income;
 	}
 
-	public Instant getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Instant birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 

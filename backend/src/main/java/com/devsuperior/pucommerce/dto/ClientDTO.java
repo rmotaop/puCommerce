@@ -1,12 +1,12 @@
 package com.devsuperior.pucommerce.dto;
 
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.*;
 
-import com.devsuperior.pucommerce.entities.Client;
+import com.devsuperior.pucommerce.entities.User;
 import com.devsuperior.pucommerce.entities.Store;
 
 public class ClientDTO {
@@ -22,7 +22,7 @@ public class ClientDTO {
     private String cpf;
 
     private Double income;
-    private Instant birthDate;
+    private LocalDate birthDate;
     private Double children;
     private String email;
 
@@ -31,7 +31,7 @@ public class ClientDTO {
     public ClientDTO(){
     }
 
-    public ClientDTO(Long id, String name, String cpf, Double income, Instant birthDate, Double children, String email) {
+    public ClientDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Double children, String email) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
@@ -41,24 +41,10 @@ public class ClientDTO {
         this.email = email;
     }
 
-    // public ClientDTO(User entity) {
-    //     this.id = entity.getId();
-    //     this.name = entity.getName();
-    // }
-
-        public ClientDTO(Client entity) {
-        this.id = entity.getId();
-        this.name = entity.getName();
-        this.cpf = entity.getCpf();
-        this.income = entity.getIncome();
-        this.birthDate = entity.getBirthDate();
-        this.children = entity.getChildren();
-        this.email = entity.getEmail();
-
-        for (Store sto : entity.getStores()) {
-            stores.add(new StoreDTO(sto));
-        }
-    }
+     public ClientDTO(User entity) {
+         this.id = entity.getId();
+         this.name = entity.getName();
+     }
 
         public Long getId() {
             return id;
@@ -92,11 +78,11 @@ public class ClientDTO {
             this.income = income;
         }
 
-        public Instant getBirthDate() {
+        public LocalDate getBirthDate() {
             return birthDate;
         }
 
-        public void setBirthDate(Instant birthDate) {
+        public void setBirthDate(LocalDate birthDate) {
             this.birthDate = birthDate;
         }
 

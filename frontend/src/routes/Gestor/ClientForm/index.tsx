@@ -56,7 +56,7 @@ export default function ClientForm() {
             validation: function (value: any) {
                 return Number(value) > 0;
             },
-            message: "Favor informe um renda média"
+            message: "Deseja informar um renda média?"
         },
         birthDate: {
             value: "",
@@ -68,7 +68,7 @@ export default function ClientForm() {
             //     return /^.{3,80}$/.test(value);
 
             // },
-            message: "Favor informar um CPF válido"
+            message: "Deseja informar uma data de aniverário?"
         },
         children: {
             value: "",
@@ -79,7 +79,7 @@ export default function ClientForm() {
             validation: function (value: any) {
                 return Number(value) > 0;
             },
-            message: "Favor quantos filhos tem"
+            message: "Deseja informar quantos filhos tem?"
         },
         email: {
             value: "",

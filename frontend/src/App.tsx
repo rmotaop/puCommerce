@@ -88,9 +88,7 @@ export default function App() {
                             <Route path="clients" element={<ClientListing />}/>
                             <Route path="clients/:clientId" element={<ClientForm />}/>
                         </Route>
-
-
-
+                        
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </HistoryRouter>

@@ -2,7 +2,7 @@ package com.devsuperior.pucommerce.dto;
 
 import com.devsuperior.pucommerce.entities.Client;
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 public class ClientMinDTO implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -11,14 +11,14 @@ public class ClientMinDTO implements Serializable {
     private String name;
     private String cpf;   
     private Double income;
-    private Instant birthDate;
+    private LocalDate birthDate;
     private Double children;
     private String email;
 
     public ClientMinDTO(){
     }
 
-    public ClientMinDTO(Long id, String name, String cpf, Double income, Instant birthDate, Double children, String email) {
+    public ClientMinDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Double children, String email) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
@@ -72,11 +72,11 @@ public class ClientMinDTO implements Serializable {
 		this.income = income;
 	}
 
-	public Instant getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Instant birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 
