@@ -50,7 +50,7 @@ export default function HeaderClient() {
                             </div>
                         </Link>
 
-                        <Link to="/myorder">
+                        <Link to="/order">
                             <div className="dsc-menu-item">
                                 <img src={budget}/>
                                 <span className="span">Meus pedidos</span>

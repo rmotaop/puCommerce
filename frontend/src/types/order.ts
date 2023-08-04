@@ -1,6 +1,5 @@
 export class Order {
     id?: number;
-    status?: number;
     items: OrderItem[] = [];
     get total(): number {
     let sum = 0;

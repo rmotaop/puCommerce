@@ -13,8 +13,12 @@ import java.time.Instant;
 import java.util.UUID;
 import java.util.List;
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.security.oauth2.authserver.AuthorizationServerProperties.Jwt;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -87,14 +91,14 @@ public class AuthService {
 		userRepository.save(user);
 	}
 
-    	protected User authenticated() {
-		try {
-			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-			Jwt jwtPrincipal = (Jwt) authentication.getPrincipal();
-			String username = jwtPrincipal.getClaim("username");
-			return userRepository.findByEmail(username);
-		} catch (Exception e) {
-			throw new UsernameNotFoundException("Invalid user");
-		}
-	}
+    // 	protected User authenticated() {
+	// 	try {
+	// 		org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	// 		Jwt jwtPrincipal = (Jwt) authentication.getPrincipal();
+	// 		String username = jwtPrincipal.getClaim("username");
+	// 		return userRepository.findByEmail(username);
+	// 	} catch (Exception e) {
+	// 		throw new UsernameNotFoundException("Invalid user");
+	// 	}
+	// }
 }

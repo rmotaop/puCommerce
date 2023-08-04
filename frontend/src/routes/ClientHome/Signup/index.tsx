@@ -8,7 +8,7 @@ import FormInput from "../../../components/FormInput";
 import {dirtyAndValidate} from "../../../utils/forms";
 import MainImage from '../../../assets/img/puCommerce.svg';
 
-export  default function Login() {
+export default function Signup() {
 
     const { setContextTokenPayload } = useContext(ContextToken);
 
@@ -32,6 +32,13 @@ export  default function Login() {
             name: "password",
             type: "password",
             placeholder: "Senha",
+        },
+        reppassword: {
+            value: "",
+            id: "reppassword",
+            name: "reppassword",
+            type: "password",
+            placeholder: "repita a Senha",
         }
     })
 
@@ -67,7 +74,7 @@ export  default function Login() {
                 
                 <div className="dsc-login-form-container">
                     <form className="dsc-card dsc-form" onSubmit={handleSubmit}>
-                        <h2>Login</h2>
+                        <h2>Registrar</h2>
                                 <img className="img" src={MainImage} alt="MainImage"/>
 
                         <div className="dsc-form-controls-container">
@@ -88,14 +95,20 @@ export  default function Login() {
                                     onTurnDirty={handleTurnDirty}
                                 />
                             </div>
+                            <div>
+                                <FormInput
+                                    { ...formData.reppassword}
+                                    className="dsc-form-control"
+                                    onChange={handleInputChange}
+                                    onTurnDirty={handleTurnDirty}
+                                />
+                            </div>
                         </div>
 
                         <div className="dsc-login-form-buttons dsc-mt20">
-                            <button type="submit" className="dsc-btn dsc-btn-blue">Entrar</button>
+                            <button type="submit" className="dsc-btn dsc-btn-blue">Registrar</button>
                         </div>
-                        <div className="dsc-login-form-buttons dsc-mt20">
-                            <Link to="/signup" className="dsc-btn dsc-btn-secondary">Registrar</Link>
-                        </div>
+
                     </form>
                 </div>
 

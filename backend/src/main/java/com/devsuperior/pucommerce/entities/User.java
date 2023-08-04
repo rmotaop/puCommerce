@@ -137,17 +137,13 @@ public class User implements UserDetails, Serializable {
          return false;
      }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		return Objects.equals(id, other.id);
-	}
+     @Override
+     public boolean equals(Object o) {
+         if (this == o) return true;
+         if (o == null || getClass() != o.getClass()) return false;
+         User user = (User) o;
+         return Objects.equals(id, user.id);
+     }
 
 
     @Override
@@ -182,7 +178,6 @@ public class User implements UserDetails, Serializable {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
 		return rolies;
 	}
 

@@ -1,4 +1,5 @@
 import {Category} from "./category";
+import {Store} from "./store";
 
 export type Product = {
     id: number;
@@ -7,4 +8,5 @@ export type Product = {
     price: number;
     imgUrl: string;
     categories: Category[];
+    stores: Store[];
 }

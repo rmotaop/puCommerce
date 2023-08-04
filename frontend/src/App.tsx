@@ -6,6 +6,7 @@ import Cart from "./routes/ClientHome/Cart";
 import {useEffect, useState} from "react";
 import { ContextCartCount } from "./utils/context-cart";
 import Login from "./routes/ClientHome/Login";
+import Signup from "./routes/ClientHome/Signup";
 import Admin from "./routes/Admin";
 import Gestor from "./routes/Gestor";
 import AdminHome from "./routes/Admin/AdminHome";
@@ -57,6 +58,7 @@ export default function App() {
                             <Route path="cart" element={<Cart />}/>
                             <Route path="confirmation/:orderId" element={<PrivateRoute><Confirmation/></PrivateRoute>}/>
                             <Route path="login" element={<Login />} />
+                            <Route path="Signup" element={<Signup />} />
                         </Route>
                         <Route path="/admin/" element={<PrivateRoute roles={['ROLE_ADMIN']}><Admin/></PrivateRoute>}>
                             <Route index element={<Navigate to="/admin/home"/>} />
@@ -88,7 +90,7 @@ export default function App() {
                             <Route path="clients" element={<ClientListing />}/>
                             <Route path="clients/:clientId" element={<ClientForm />}/>
                         </Route>
-                        
+                      
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </HistoryRouter>

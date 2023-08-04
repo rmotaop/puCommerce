@@ -12,13 +12,13 @@ public class ClientMinDTO implements Serializable {
     private String cpf;   
     private Double income;
     private LocalDate birthDate;
-    private Double children;
+    private Integer children;
     private String email;
 
     public ClientMinDTO(){
     }
 
-    public ClientMinDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Double children, String email) {
+    public ClientMinDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children, String email) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
@@ -80,11 +80,11 @@ public class ClientMinDTO implements Serializable {
 		this.birthDate = birthDate;
 	}
 
-	public Double getChildren() {
+	public Integer getChildren() {
 		return children;
 	}
 
-	public void setChildren(Double children) {
+	public void setChildren(Integer children) {
 		this.children = children;
 	}
 

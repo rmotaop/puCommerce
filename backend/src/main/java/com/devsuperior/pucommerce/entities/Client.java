@@ -23,7 +23,7 @@ public class Client implements Serializable{
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private LocalDate birthDate;
-	private Double children;
+	private Integer children;
 
 	@Column(unique = true)
 	private String email;
@@ -39,7 +39,7 @@ public class Client implements Serializable{
     }
 
 
-	public Client(Long id, String name, String cpf, Double income, LocalDate birthDate, Double children, String email, String password) {
+	public Client(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children, String email, String password) {
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
@@ -90,11 +90,11 @@ public class Client implements Serializable{
 		this.birthDate = birthDate;
 	}
 
-	public Double getChildren() {
+	public Integer getChildren() {
 		return children;
 	}
 
-	public void setChildren(Double children) {
+	public void setChildren(Integer children) {
 		this.children = children;
 	}
 

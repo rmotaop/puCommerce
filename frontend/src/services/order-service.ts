@@ -19,6 +19,25 @@ export function placeOrderRequest(cart: Order) {
         withCredentials: true,
         data: cart
     }
+  
+    return requestBackend(config);
+}
+
+
+export function findPageRequest(page: number, size=12) {
+    const config: AxiosRequestConfig = {
+        method: 'GET',
+        url: '/orders',
+        params: {
+            page: page,
+            size: size,
+
+        }
+    }
 
     return requestBackend(config);
+}
+
+export function findById(id: number) {
+    return requestBackend({ url:`/orders/${id}` })
 }
