@@ -1,8 +1,8 @@
 #login-section {
+    margin-top: 80px;
     padding: 20px 0;
 }
-
-  
+ 
   .dsc-card .img {
     margin-top: 10px;
     width: 250px;
@@ -18,9 +18,7 @@
 .dsc-login-form-buttons {
     width: 100%;
 }
-.dsc-login-form-buttons .dsc-btn .dsc-btn-blue {
-    background-color: red !important;
-}
+
 
 @media (min-width: 576px) {
     #login-section {

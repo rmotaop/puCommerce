@@ -1,5 +1,6 @@
 import "./styles.css";
 import SearchBar from "../../../components/SearchBar";
+import SearchCat from "../../../components/SearchCat";
 import CatalogCard from "../../../components/CatalogCard";
 import ButtonNextPage from "../../../components/ButtonNextPage";
 import { Product } from "../../../types/product";
@@ -27,7 +28,6 @@ export default function Catalog() {
     name: ''
   })
 
-
   useEffect(()=>{
     productService.findPageRequest(queryParams.page,queryParams.name)
     .then(response => {
@@ -43,6 +43,11 @@ export default function Catalog() {
     setQueryParams({...queryParams,page: 0, name: searchText});
   }
 
+  function handleSearchCat(searchText: string) {
+    setProducts([]);
+    setQueryParams({...queryParams,page: 0, name: searchText});
+  }
+
   function handleNextPageClick() {
     setQueryParams({...queryParams, page: queryParams.page + 1})
   }
@@ -50,7 +55,11 @@ export default function Catalog() {
   return (
     <main>
       <section id="catalog-section" className="dsc-container">
-        <SearchBar onSearch={handleSearch}/>
+        <div className="searchbar">
+          <SearchBar  onSearch={handleSearch} />
+          <SearchCat  onSearch={handleSearchCat} />
+
+        </div>
 
         <div className="dsc-catalog-cards dsc-mb20 dsc-mt20">
 

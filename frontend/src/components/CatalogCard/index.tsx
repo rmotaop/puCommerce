@@ -1,5 +1,4 @@
 import "./styles.css";
-import computerImg from "../../assets/img/computer.png";
 import { Product } from "../../types/product";
 import { Link } from "react-router-dom";
 

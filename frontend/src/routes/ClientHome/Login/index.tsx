@@ -68,7 +68,7 @@ export  default function Login() {
                 <div className="dsc-login-form-container">
                     <form className="dsc-card dsc-form" onSubmit={handleSubmit}>
                         <h2>Login</h2>
-                                <img className="img" src={MainImage} alt="MainImage"/>
+                            <img className="img" src={MainImage} alt="MainImage"/>
 
                         <div className="dsc-form-controls-container">
                             <div>
@@ -94,7 +94,10 @@ export  default function Login() {
                             <button type="submit" className="dsc-btn dsc-btn-blue">Entrar</button>
                         </div>
                         <div className="dsc-login-form-buttons dsc-mt20">
-                            <Link to="/signup" className="dsc-btn dsc-btn-secondary">Registrar</Link>
+                            <Link to="/signup" className="dsc-btn dsc-btn-success">Registrar</Link>
+                        </div>
+                        <div className="dsc-login-form-buttons dsc-mt20">
+                            <Link to="/catalog" className="dsc-btn dsc-btn-secondary">Catálogo de produtos</Link>
                         </div>
                     </form>
                 </div>

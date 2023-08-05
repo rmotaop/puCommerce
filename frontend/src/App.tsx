@@ -30,6 +30,9 @@ import UserListing from "./routes/Admin/UserListing";
 import UserForm from "./routes/Admin/UserForm";
 import UserHome from "./routes/Admin/UserHome";
 
+import OrderListing from "./routes/ClientHome/OrderListing";
+import OrderForm from "./routes/ClientHome/OrderForm";
+
 
 export default function App() {
 
@@ -50,15 +53,19 @@ export default function App() {
             <ContextCartCount.Provider value={{ contextCartCount, setContextCartCount }}>
                 <HistoryRouter history={history}>
                     <Routes>
-                        
+                        <Route path="/" >
+                            <Route path="login" element={<Login />} />
+                            <Route path="Signup" element={<Signup />} />
+                        </Route>
+
                         <Route path="/" element={<ClientHome />}>
                             <Route index element={<Catalog />} />
                             <Route path="catalog" element={<Catalog />} />
                             <Route path="product-details/:productId" element={<ProductDetails />} />
                             <Route path="cart" element={<Cart />}/>
+                            <Route path="order" element={<OrderListing />}/>
+                            <Route path="order/:orderId" element={<OrderForm />}/>
                             <Route path="confirmation/:orderId" element={<PrivateRoute><Confirmation/></PrivateRoute>}/>
-                            <Route path="login" element={<Login />} />
-                            <Route path="Signup" element={<Signup />} />
                         </Route>
                         <Route path="/admin/" element={<PrivateRoute roles={['ROLE_ADMIN']}><Admin/></PrivateRoute>}>
                             <Route index element={<Navigate to="/admin/home"/>} />

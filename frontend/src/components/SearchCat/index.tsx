@@ -5,7 +5,7 @@ type Props = {
   onSearch: Function
 }
 
-export default function SearchBar({onSearch} : Props) {
+export default function SearchCat({onSearch} : Props) {
 
   const [text, setText] = useState('');
   const [store, setStore] = useState('');
@@ -28,7 +28,7 @@ export default function SearchBar({onSearch} : Props) {
           <button type="submit">🔎︎</button>
           <input 
             type="text"
-            placeholder="Persquisa por nome."
+            placeholder="Filtrar Categoria"
             name="text"
             value={text}
             onChange={handleChange}

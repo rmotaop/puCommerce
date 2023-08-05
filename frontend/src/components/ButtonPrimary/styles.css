@@ -3,3 +3,14 @@
     background-color: var(--dsc-color-btn-primary);
     color: var(--dsc-color-btn-inverse);
   }
+
+  .dsc-btn-success {
+    border: none;
+    background-color: var(--dsc-color-btn-success);
+    color: var(--dsc-color-btn-inverse);
+  }
+  .dsc-btn-secondary {
+    border: none;
+    background-color: var(--dsc-color-btn-secondary);
+    color: var(--dsc-color-btn-inverse);
+  }

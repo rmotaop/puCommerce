@@ -28,8 +28,7 @@ export default function LoggedUser() {
         (
             <div className="dsc-logged-user">
                     <p>Olá: {contextTokenPayload.user_name}
-                    
-                    <span onClick={handleLogoutClick}>Sair</span>
+                        <span onClick={handleLogoutClick}>Sair</span>
                     </p>
                 </div>
             )
