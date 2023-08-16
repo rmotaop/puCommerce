@@ -8,17 +8,17 @@ import * as authService from '../../services/auth-service'
 import {ContextToken} from "../../utils/context-token";
 import LoggedUser from "../LoggedUser";
 
-
 export default function HeaderClient() {
-
     const { contextTokenPayload } = useContext(ContextToken);
-
-
     return (
         <header className="dsc-header-client">
             <nav className="dsc-container">
                 <span>
+                <Link to="/Home">
                     <h1>puCommerce</h1>
+            
+                </Link>
+
                 </span>
                 <div className="dsc-navbar-right">
                     <div className="dsc-menu-items-container">

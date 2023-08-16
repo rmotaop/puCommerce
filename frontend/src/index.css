@@ -21,6 +21,13 @@
   --dsc-color-font-placeholder: #d9d9d9;
 
   --dsc-color-error: #e97065;
+  --clr-primary-5: hsl(22, 31%, 52%);
+  --clr-black: #222;
+  --transition: all 0.3s linear;
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-white: #fff;
+  --radius: 0.35rem;
 }
 
 * {

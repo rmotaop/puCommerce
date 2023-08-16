@@ -32,6 +32,7 @@ import UserHome from "./routes/Admin/UserHome";
 
 import OrderListing from "./routes/ClientHome/OrderListing";
 import OrderForm from "./routes/ClientHome/OrderForm";
+import PucHome from "./routes/Home/PucHome";
 
 
 export default function App() {
@@ -53,7 +54,10 @@ export default function App() {
             <ContextCartCount.Provider value={{ contextCartCount, setContextCartCount }}>
                 <HistoryRouter history={history}>
                     <Routes>
+
+
                         <Route path="/" >
+                            <Route path="home" element={<PucHome />} />
                             <Route path="login" element={<Login />} />
                             <Route path="Signup" element={<Signup />} />
                         </Route>

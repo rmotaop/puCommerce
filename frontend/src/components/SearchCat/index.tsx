@@ -7,19 +7,19 @@ type Props = {
 
 export default function SearchCat({onSearch} : Props) {
 
-  const [text, setText] = useState('');
+  const [categories, setCategories] = useState('');
   const [store, setStore] = useState('');
 
     function handleSubmit(event: any) {
       event.preventDefault();
-      onSearch(text);
+      onSearch(categories);
     }
     function handleChange(event: any) {
-      setText(event.target.value)
+      setCategories(event.target.value)
     }
     function handleResetClick(event: any) {
-      setText('');
-      onSearch(text);
+      setCategories('');
+      onSearch(categories);
     }
 
     return (
@@ -29,8 +29,8 @@ export default function SearchCat({onSearch} : Props) {
           <input 
             type="text"
             placeholder="Filtrar Categoria"
-            name="text"
-            value={text}
+            name="categories"
+            value={categories}
             onChange={handleChange}
           />
           <button onClick={handleResetClick}>🗙</button>

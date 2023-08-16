@@ -18,7 +18,7 @@ export default function LoggedUser() {
         authService.logout();
         setContextTokenPayload(undefined);
         setContextCartCount(contextCartCount)
-        navigate("/catalog");
+        navigate("/Home");
     }
    
     return (
