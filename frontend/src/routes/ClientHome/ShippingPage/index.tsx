@@ -1,31 +1,35 @@
-import './styles.css';
+import "./styles.css";
 // import styled from 'styled-components'
 // import { Calalog } from '../components'
-import shopLogo from '../assets/puCommerce.svg'
-import Catalog from '../Catalog'
+import shopLogo from "../../../assets/img/puCommerce.svg";
+import Catalog from "../Catalog";
+import HeaderClient from "../../../components/HeaderClient";
+import Footer from "../../../components/Footer";
 
 const ShippingPage = () => {
   return (
-    <main>
-      
-      <div className="page section section-center">
-        {/* insert about page image here */}
-        <img src={shopLogo} alt='square logo' />
-        <article className='title'>
-          <h2>Free Shipping!!!</h2>
-          <div className='underline'></div>
-          <p>
-            We currently offer free shipping for any places within Thailand.
-          </p>
-          <p>
-            You will also receive a free gift from us if you spend more than
-            1500B with us.
-          </p>
-        </article>
+    <>
+      <div className="section">
+        <HeaderClient />
+        <div className="row">
+          <div className="column">
+            <img src={shopLogo} className="mainShip" alt="mainShip" />
+          </div>
+          <div className="column">
+            <h2>Envio gratis!!!</h2>
+            <p>
+              Atualmente, oferecemos frete grátis para qualquer lugar do Brasil.
+            </p>
+            <p>
+              Você também receberá um brinde nosso nas compras acima de R$1.500
+              fique conosco.
+            </p>
+          </div>
+        </div>
       </div>
-    </main>
-  )
-}
+      <Footer />
+    </>
+  );
+};
 
-
-export default ShippingPage
+export default ShippingPage;

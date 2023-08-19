@@ -33,6 +33,7 @@ import UserHome from "./routes/Admin/UserHome";
 import OrderListing from "./routes/ClientHome/OrderListing";
 import OrderForm from "./routes/ClientHome/OrderForm";
 import PucHome from "./routes/Home/PucHome";
+import ShippingPage from "./routes/ClientHome/ShippingPage";
 
 
 export default function App() {
@@ -58,6 +59,7 @@ export default function App() {
 
                         <Route path="/" >
                             <Route path="home" element={<PucHome />} />
+                            <Route path="shipping" element={<ShippingPage />} />
                             <Route path="login" element={<Login />} />
                             <Route path="Signup" element={<Signup />} />
                         </Route>

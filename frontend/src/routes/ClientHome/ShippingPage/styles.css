@@ -1,27 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .section {
-    display: grid;
-    gap: 4rem;
-    img {
-      width: 100%;
-      display: block;
-      border-radius: var(--radius);
-      height: 500px;
-      object-fit: cover;
-    }
-    p {
-      line-height: 2;
-      max-width: 45em;
-      margin: 0 auto;
-      margin-top: 2rem;
-      color: var(--clr-grey-5);
-    }
-    .title {
-      text-align: left;
-    }
-    .underline {
-      margin-left: 0;
-    }
-    @media (min-width: 992px) {
-      grid-template-columns: 1fr 1fr;
-    }
+  min-height: 90vh;
+  min-width: 90vh;
+}
+
+.section {
+  background-color: #ffff;
+  height: auto !important;
+}
+
+.column {
+  margin-top: 5rem;
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+}
+
+.column h2 {
+  padding-top: 5rem;
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-top: 5rem;
+}
+
+.column p {
+  font-size: 1.1rem;
+  margin-left: 0rem;
+}
+
+.row .column .mainShip {
+  margin-left: 25%;
+
+  width: 30rem;
+  height: 30rem;
 }

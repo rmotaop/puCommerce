@@ -1,105 +1,92 @@
-
-.section .main-img {
-  width: 20%;
-  height: 30%;
-  top: 1%;
-  position: relative;
-  border-radius: var(--radius);
-  display: block;
-  object-fit: cover;
-  margin-left: auto;
-  margin-right: auto;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+.section {
+  min-height: 90vh;
+}
+
+.section {
+  background-color: #ffff;
+}
+
+.column {
+  margin-top: 2rem;
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 500px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+}
+.row .column .h1 {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-top: 10rem;
+  margin-left: 15rem;
+}
+
+.column .p {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  margin-left: 15rem;
+}
+
+.btnProducts {
+  position: relative;
+  margin-left: 15rem;
+  padding: 5px 20px;
+  background-color: rgba(247, 191, 70, 0.794);
+  border-radius: 4px;
+  color: black;
+  cursor: pointer;
+}
+.btnSubscrib {
+  position: relative;
+  padding: 5px 20px;
+  background-color: rgba(247, 191, 70, 0.794);
+  border-radius: 0 9px 9px 0;
+  border: 0.5px solid;
+  border-color: rgb(189, 186, 186);
+  color: black;
+  cursor: pointer;
+}
+
+.row .column .main-img {
+  justify-content: center;
+  width: 30rem;
+  height: 30rem;
+}
+
 .section h3 {
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
 }
+
+.newsletter h3 {
+  font-size: 1rem;
+  justify-content: center;
+  padding-bottom: 0px;
+}
+.rodape {
+  margin-top: 1rem;
+}
+
 .contact-form {
   display: flex;
   margin-left: 40%;
 }
-.form-control{
+
+.inputType {
   width: 20%;
   height: 2.2rem;
-}
-
-.section article {
-  height: 100px;
-}
-
-.section h1 {
-  display: flex;
-  align-items: center !important;
-}
-.section h3 {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center !important;
-}
-
-.section p {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center !important;
-}
-
-.section .content{
-  margin-top: 1%;
-  min-height: 20vh;
-  display: grid;
-  place-items: center;
-
-  p {
-    line-height: 2;
-    max-width: 45em;
-    margin-bottom: 1rem;
-    color: var(--clr-primary-3);
-    font-size: 1rem;
-  }
-
-  @media (min-width: 992px) {
-    height: calc(100vh - 5rem);
-    grid-template-columns: 1fr 1fr;
-    gap: 8rem;
-    h1 {
-      margin-bottom: 2rem;
-    }
-    p {
-      font-size: 1.25rem;
-    }
-    .hero-btn {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-    }
-    .img-container {
-      display: block;
-      position: relative;
-    }
-    .main-img {
-      width: 50%;
-      height: 100px;
-      position: relative;
-      border-radius: var(--radius);
-      display: block;
-      object-fit: cover;
-    }
-    .accent-img {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 250px;
-      transform: translateX(-50%);
-      border-radius: var(--radius);
-    }
-    .img-container::before {
-      content: '';
-      position: absolute;
-      width: 10%;
-      height: 80%;
-      background: var(--clr-primary-9);
-      bottom: 0%;
-      left: -8%;
-      border-radius: var(--radius);
-    }
-  }
+  border-radius: 7px 0 0 7px;
+  border: 0.5px solid;
+  border-color: rgb(189, 186, 186);
 }

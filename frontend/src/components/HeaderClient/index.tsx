@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom';
 import {useContext} from "react";
 import CartIcon from "../CartIcon";
 import iconAdmin from '../../assets/img/admin.svg';
+import envio from '../../assets/img/admin.svg';
+import stock from '../../assets/img/admin.svg';
 import people from '../../assets/img/people.svg';
 import * as authService from '../../services/auth-service'
 import {ContextToken} from "../../utils/context-token";
@@ -14,11 +16,25 @@ export default function HeaderClient() {
         <header className="dsc-header-client">
             <nav className="dsc-container">
                 <span>
-                <Link to="/Home">
-                    <h1>puCommerce</h1>
-            
-                </Link>
-
+                    <Link to="/Home">
+                        <h1>puCommerce</h1>
+                    </Link>
+                </span>
+                <span>
+                    <Link to="/Shipping">
+                        <div className="dsc-menu-item">
+                        <img src={envio}/>
+                        <span className="span">Forma de Envio</span>
+                        </div>
+                    </Link>
+                </span>
+                <span>
+                    <Link to="/Catalog">
+                        <div className="dsc-menu-item">
+                        <img src={stock}/>
+                        <span className="span">Produtos</span>
+                        </div>
+                    </Link>
                 </span>
                 <div className="dsc-navbar-right">
                     <div className="dsc-menu-items-container">
