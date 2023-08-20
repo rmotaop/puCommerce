@@ -16,13 +16,13 @@ export default function CartIcon() {
     <>
       {contextTokenPayload && authService.isAuthenticated() ? (
         <>
-          <img src={cartIcon} alt="Carrinho de compras" />
+          <img className="img" src={cartIcon} alt="Carrinho" />
           {contextCartCount > 0 && (
             <div className="dsc-cart-count">{contextCartCount}</div>
           )}
         </>
       ) : (
-        <img src={cartIcon} alt="Carrinho de compras" />
+        <img className="img" src={cartIcon} alt="Carrinho" />
       )}
     </>
   );

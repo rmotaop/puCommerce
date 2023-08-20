@@ -9,16 +9,20 @@ import { Link } from 'react-router-dom';
 import {useContext, useEffect, useState} from 'react';
 import * as cartService from '../../../services/cart-service';
 import {ContextCartCount} from "../../../utils/context-cart";
+import {ContextToken} from "../../../utils/context-token";
+import * as authService from '../../../services/auth-service';
 
 export default function ProductDetails() {
-
+  
   const navigate = useNavigate();
-
+  
   const params = useParams();
-
+  
   const {setContextCartCount} = useContext(ContextCartCount);
-
+  
   const [product, setProduct] = useState<Product>();
+  
+  const {contextTokenPayload, setContextTokenPayload } = useContext(ContextToken);
 
   useEffect(() => {
     productService.findById(Number(params.productId))
@@ -32,11 +36,14 @@ export default function ProductDetails() {
   },[]);
 
   function handleBuyCLick() {
-    if(product) {
+    if(product && contextTokenPayload && authService.isAuthenticated()) {
       cartService.addProduct(product);
       setContextCartCount(cartService.getCart().items.length)
       navigate("/cart")
+    } else {
+      navigate("/login")
     }
+
   }
 
   return (

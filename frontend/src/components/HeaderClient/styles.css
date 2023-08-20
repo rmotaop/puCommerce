@@ -16,6 +16,17 @@
   margin-left: 5px !important;
 }
 .dsc-header-client .dsc-container .dsc-menu-item .span {
-  margin-left: 5px !important;
+  margin-left: 5px;
+}
+.dsc-header-client .dsc-container .dsc-menu-item .span1 {
+  margin-left: 3px;
+}
+.dsc-header-client .dsc-container .dsc-menu-item .img {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.dsc-header-client .dsc-container .dsc-menu-item .img1 {
+  width: 2.0rem;
+  height: 2.0rem;
 }
 

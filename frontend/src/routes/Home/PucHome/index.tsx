@@ -12,7 +12,7 @@ const PucHome = () => {
         <div className="row">
           <div className="column">
             <h1 className="h1">
-              Alta qualidade <br /> e produtos para todas as necessidades
+              <b>Alta qualidade</b> <br /> e produtos para todas as necessidades
             </h1>
             <p className="p">
               Produtos de qualidade importados do Japão, Europa e EUA e também
@@ -40,7 +40,7 @@ const PucHome = () => {
               placeholder="  informe o email"
             />
             <button type="submit" className="btnSubscrib">
-              Increva-se
+              Inscreva-se
             </button>
           </form>
         </div>
