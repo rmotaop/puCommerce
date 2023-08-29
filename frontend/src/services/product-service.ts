@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { BASE_URL } from "../utils/system";
 import {requestBackend} from "../utils/requests";
-import {Product} from "../types/product";
+import {Product, Category} from "../types/product";
 
 
 export function findPageRequest(page: number, name: string, size=12, sort = 'name') {
@@ -12,7 +12,8 @@ export function findPageRequest(page: number, name: string, size=12, sort = 'nam
             page: page,
             name: name,
             size: size,
-            sort: sort
+            sort: sort,
+
         }
     }
 

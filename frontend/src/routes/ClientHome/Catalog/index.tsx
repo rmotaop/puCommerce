@@ -14,6 +14,10 @@ type QueryParams = {
   page: number;
   name: string;
 }
+type QueryParamsCat = {
+  page: number;
+  categories: string;
+}
 
 export default function Catalog() {
 
@@ -26,6 +30,10 @@ export default function Catalog() {
   const [queryParams, setQueryParams] = useState<QueryParams>({
     page: 0,
     name: ''
+  })
+  const [queryParamsCat, setQueryParamsCat] = useState<QueryParamsCat>({
+    page: 0,
+    categories: ''
   })
 
   useEffect(()=>{
@@ -43,9 +51,9 @@ export default function Catalog() {
     setQueryParams({...queryParams,page: 0, name: searchText});
   }
 
-  function handleSearchCat(searchText: string) {
+  function handleSearchCat(searchCat: string) {
     setProducts([]);
-    setQueryParams({...queryParams,page: 0, name: searchText});
+    setQueryParamsCat({...queryParamsCat,page: 0, categories: searchCat});
   }
 
   function handleNextPageClick() {
@@ -65,7 +73,8 @@ export default function Catalog() {
 
           {
             products.map(
-              product => <CatalogCard key={product.id} product={product} />)
+              product => <CatalogCard key={product.id} product={product} />
+              )
           }
         </div>
         {

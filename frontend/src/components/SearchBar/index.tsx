@@ -28,7 +28,7 @@ export default function SearchBar({onSearch} : Props) {
           <button type="submit">🔎︎</button>
           <input 
             type="text"
-            placeholder="Persquisa por nome."
+            placeholder="Pesquisa por nome"
             name="text"
             value={text}
             onChange={handleChange}

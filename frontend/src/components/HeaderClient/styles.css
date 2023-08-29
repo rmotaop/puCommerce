@@ -30,3 +30,48 @@
   height: 2.0rem;
 }
 
+@media (max-width: 768px) {
+  .dsc-container {
+      justify-content: flex-end;
+  }
+  .dsc-container h1 {
+    display: flex;
+    margin-right: 2em;
+    font-size: 1.2em;
+  }
+  .dsc-container .logUser {
+    display: flex;
+    margin-right: 9em;
+  }
+}
+
+@media (max-width: 576px) {
+  .dsc-container  {
+    width: 90% !important;
+    justify-content: space-between;
+}
+  .dsc-container h1 {
+    padding-left: -10px !important;
+    font-size: 1em;
+}
+  .dsc-container .img {
+    width: 0.7rem;
+    height: 0.7rem;
+}
+  .dsc-container .img1 {
+    width: 0.7rem;
+    height: 0.7rem;
+}
+  .dsc-container .span {
+    font-size: 0.8em;
+}
+  .dsc-container .span1 {
+    font-size: 0.8em;
+}
+.dsc-container .logUser {
+  margin-left: -3em;
+  margin-right: 19em;
+}
+}
+
+

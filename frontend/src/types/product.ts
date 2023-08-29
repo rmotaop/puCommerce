@@ -1,5 +1,4 @@
-import {Category} from "./category";
-import {Store} from "./store";
+
 
 export type Product = {
     id: number;
@@ -11,3 +10,16 @@ export type Product = {
     stores: Store[];
 }
 
+export type Category = {
+    id: number;
+    name: string;
+}
+
+export type Store = {
+    id: number;
+    name: string;
+    description: string;
+    priceMercade: number;
+    imgUrl: string;
+    categories: Category[];
+}

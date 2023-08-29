@@ -13,5 +13,25 @@ background-color: var(--dsc-color-bg-notification);
     left: -10px;
 }
 
+@media (max-width: 576px) {
 
+    .dsc-container .img {
+      width: 0.7rem;
+      height: 0.7rem;
+  }
+    .dsc-container .img1 {
+      width: 0.7rem;
+      height: 0.7rem;
+  }
+    .dsc-container .span {
+      font-size: 0.8em;
+  }
+    .dsc-container .span1 {
+      font-size: 0.8em;
+  }
+  .dsc-container .logUser {
+    margin-left: -3em;
+    margin-right: 19em;
+  }
+  }
 

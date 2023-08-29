@@ -1,10 +1,15 @@
 import "./styles.css";
-import { Product } from "../../types/product";
+import { Product,Category } from "../../types/product";
 import { Link } from "react-router-dom";
+
+import ProductCategory from "../ProductCategory";
+
 
 type Props = {
   product: Product;
+
 };
+
 
 export default function CatalogCard({ product }: Props) {
   return (
@@ -16,8 +21,10 @@ export default function CatalogCard({ product }: Props) {
         <div className="dsc-catalog-card-bottom">
           <h3>R$ {product.price.toFixed(2)}</h3>
           <h4>{product.name}</h4>
+
         </div>
       </div>
     </Link>
+
   );
 }
