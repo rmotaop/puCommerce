@@ -32,7 +32,7 @@ import UserHome from "./routes/Admin/UserHome";
 
 import OrderListing from "./routes/ClientHome/OrderListing";
 import OrderForm from "./routes/ClientHome/OrderForm";
-import PucHome from "./routes/Home/PucHome";
+import PucHome from "./routes/Home";
 import ShippingPage from "./routes/ClientHome/ShippingPage";
 
 

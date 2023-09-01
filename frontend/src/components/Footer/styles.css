@@ -1,9 +1,9 @@
 .footer {
-  height: 4.2rem;
-  display: flex;
-  flex-direction: column;
+  height: 4.5rem;
+  width: 100vmax;
+
   justify-content: center;
-  align-items: center;
+
   background: var(--clr-black);
   text-align: center;
 }
@@ -13,9 +13,10 @@
   }
 
   .footer h5 {
+    top: -10px;
+    padding-bottom: 10px !important;
     color: var(--clr-white);
     margin: 0.1rem;
-
     font-weight: 400;
     text-transform: none;
     line-height: 1.25;

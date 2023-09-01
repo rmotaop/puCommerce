@@ -5,9 +5,9 @@ const Footer = () => {
     <div className="footer">
       <h5>
         &copy; {new Date().getFullYear()}
-        <span> puCommerce</span>
+        <span> puCommerce</span><br/>
+        {'  '}All rights reserved
       </h5>
-      <h5>{'  '}All rights reserved</h5>
     </div>
   )
 }

@@ -1,21 +1,20 @@
 .dsc-header-client {
-    background-color: var(--dsc-color-bg-secondary);
-    color: var(--dsc-color-font-primary);
-  }
-  .dsc-header-client .logUser {
- 
-    margin-right: 100px;
-  }
-
-  .logUser{
-    position: relative;
-    left: 100px !important;
+  background-color: var(--dsc-color-bg-secondary);
+  color: var(--dsc-color-font-primary);
+}
+.dsc-header-client .logUser {
+  margin-right: 2vh;
 }
 
+.logUser {
+  position: relative;
+  left: 2vh !important;
+}
 .dsc-navbar-right .dsc-menu-items-container .dsc-menu-item .span {
   margin-left: 5px !important;
 }
 .dsc-header-client .dsc-container .dsc-menu-item .span {
+  width: auto;
   margin-left: 5px;
 }
 .dsc-header-client .dsc-container .dsc-menu-item .span1 {
@@ -26,13 +25,14 @@
   height: 1.4rem;
 }
 .dsc-header-client .dsc-container .dsc-menu-item .img1 {
-  width: 2.0rem;
-  height: 2.0rem;
+  margin-left: 2vh;
+  width: 2rem;
+  height: 2rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1900px) {
   .dsc-container {
-      justify-content: flex-end;
+    justify-content: center;
   }
   .dsc-container h1 {
     display: flex;
@@ -45,33 +45,31 @@
   }
 }
 
-@media (max-width: 576px) {
-  .dsc-container  {
+@media (min-width: 576px) and (max-width: 767px) {
+  .dsc-container {
     width: 90% !important;
     justify-content: space-between;
-}
+  }
   .dsc-container h1 {
     padding-left: -10px !important;
     font-size: 1em;
-}
+  }
   .dsc-container .img {
     width: 0.7rem;
     height: 0.7rem;
-}
+  }
   .dsc-container .img1 {
     width: 0.7rem;
     height: 0.7rem;
-}
+  }
   .dsc-container .span {
     font-size: 0.8em;
-}
+  }
   .dsc-container .span1 {
     font-size: 0.8em;
+  }
+  .dsc-container .logUser {
+    margin-left: -3em;
+    margin-right: 19em;
+  }
 }
-.dsc-container .logUser {
-  margin-left: -3em;
-  margin-right: 19em;
-}
-}
-
-
